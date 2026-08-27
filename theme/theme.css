@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --background: #fffaf7;
+  --background-light: #fff5ef;
+  --stroke: #e7eaf0;
+  --text: #171717;
+  --text-light: #667085;
+  --disabled: #98a2b3;
+  --primary: #e94f37;
+  --primary-light: #ff6b57;
+  --primary-dark: #c63826;
+  --secondary: #f4b942;
+  --secondary-light: #ffddd7;
+  --secondary-dark: #c63826;
+  --tertiary: #8b5cf6;
+  --tertiary-light: #ede4ff;
+  --tertiary-dark: #6d3ed0;
+  --success: #16865b;
+  --error: #dc3545;
+  --neutral: #171717;
+  --font-app-font: 'Lexend', sans-serif;
+  --font-secondary-font: 'DM Sans', sans-serif;
+
+  --heading-1-b: 700 clamp(2rem, 1.5vw + 1.5rem, 3.2rem) / 1.125
+    var(--font-app-font); /* 32px → 51.2px */
+  --heading-1-m: 500 clamp(2rem, 1.5vw + 1.5rem, 3.2rem) / 1.125
+    var(--font-app-font); /* 32px → 51.2px */
+  --heading-1-r: 400 clamp(2rem, 1.5vw + 1.5rem, 3.2rem) / 1.125
+    var(--font-app-font); /* 32px → 51.2px */
+
+  --heading-2-b: 700 clamp(1.75rem, 1.2vw + 1.35rem, 2.5rem) / 1.12
+    var(--font-app-font); /* 28px → 40px */
+  --heading-2-m: 500 clamp(1.75rem, 1.2vw + 1.35rem, 2.5rem) / 1.12
+    var(--font-app-font); /* 28px → 40px */
+  --heading-2-r: 400 clamp(1.75rem, 1.2vw + 1.35rem, 2.5rem) / 1.12
+    var(--font-app-font); /* 28px → 40px */
+
+  --heading-3-b: 700 clamp(1.5rem, 0.8vw + 1.25rem, 2rem) / 1.1875
+    var(--font-app-font); /* 24px → 32px */
+  --heading-3-m: 500 clamp(1.5rem, 0.8vw + 1.25rem, 2rem) / 1.1875
+    var(--font-app-font); /* 24px → 32px */
+  --heading-3-r: 400 clamp(1.5rem, 0.8vw + 1.25rem, 2rem) / 1.1875
+    var(--font-app-font); /* 24px → 32px */
+
+  --heading-4-b: 700 clamp(1.25rem, 0.5vw + 1.1rem, 1.625rem) / 1.214
+    var(--font-app-font); /* 20px → 26px */
+  --heading-4-m: 500 clamp(1.25rem, 0.5vw + 1.1rem, 1.625rem) / 1.214
+    var(--font-app-font); /* 20px → 26px */
+  --heading-4-r: 400 clamp(1.25rem, 0.5vw + 1.1rem, 1.625rem) / 1.214
+    var(--font-app-font); /* 20px → 26px */
+
+  --heading-5-b: 700 clamp(1.125rem, 0.4vw + 1rem, 1.375rem) / 1.333
+    var(--font-app-font); /* 18px → 22px */
+  --heading-5-m: 500 clamp(1.125rem, 0.4vw + 1rem, 1.375rem) / 1.333
+    var(--font-app-font); /* 18px → 22px */
+  --heading-5-r: 400 clamp(1.125rem, 0.4vw + 1rem, 1.375rem) / 1.333
+    var(--font-app-font); /* 18px → 22px */
+
+  --heading-6-b: 700 clamp(1rem, 0.25vw + 0.95rem, 1.125rem) / 1.4
+    var(--font-app-font); /* 16px → 18px */
+  --heading-6-m: 500 clamp(1rem, 0.25vw + 0.95rem, 1.125rem) / 1.4
+    var(--font-app-font); /* 16px → 18px */
+  --heading-6-r: 400 clamp(1rem, 0.25vw + 0.95rem, 1.125rem) / 1.4
+    var(--font-app-font); /* 16px → 18px */
+
+  --body-1-b: 700 1rem / 1.5 var(--font-app-font); /* 16px */
+  --body-1-m: 500 1rem / 1.5 var(--font-app-font); /* 16px */
+  --body-1-r: 400 1rem / 1.5 var(--font-app-font); /* 16px */
+
+  --body-2-b: 700 0.875rem / 1.43 var(--font-app-font); /* 14px */
+  --body-2-m: 500 0.875rem / 1.43 var(--font-app-font); /* 14px */
+  --body-2-r: 400 0.875rem / 1.43 var(--font-app-font); /* 14px */
+
+  --footer-1-b: 700 0.75rem / 1.33 var(--font-app-font); /* 12px */
+  --footer-1-m: 500 0.75rem / 1.33 var(--font-app-font); /* 12px */
+  --footer-1-r: 400 0.75rem / 1.33 var(--font-app-font); /* 12px */
+
+  --footer-2-b: 700 0.625rem / 1.4 var(--font-app-font); /* 10px */
+  --footer-2-m: 500 0.625rem / 1.4 var(--font-app-font); /* 10px */
+  --footer-2-r: 400 0.625rem / 1.4 var(--font-app-font); /* 10px */
+
+  --app-radius: 24px;
+  --button-radius: 999px;
+  --input-radius: 12px;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: #211e1d;
+  --background: #151313;
+  --background-light: #292321;
+  --stroke: #413a37;
+  --text: #fffaf7;
+  --text-light: #b9b1ad;
+  --disabled: #837873;
+  --primary-light: #ff806e;
+  --secondary-light: #ffe1a1;
+  --tertiary-light: #c2a8ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-light: var(--background-light);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-text-light: var(--text-light);
+  --color-stroke: var(--stroke);
+  --color-disabled: var(--disabled);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-light: var(--tertiary-light);
+  --color-tertiary-dark: var(--tertiary-dark);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-neutral: var(--neutral);
+  --font-primary: var(--font-app-font);
+
+  --radius-app-radius: var(--app-radius);
+  --radius-btn-radius: var(--button-radius);
+  --radius-input-radius: var(--input-radius);
+}
+
+@layer components {
+  .h1-b {
+    font: var(--heading-1-b);
+  }
+  .h1-m {
+    font: var(--heading-1-m);
+  }
+  .h1-r {
+    font: var(--heading-1-r);
+  }
+
+  .h2-b {
+    font: var(--heading-2-b);
+  }
+  .h2-m {
+    font: var(--heading-2-m);
+  }
+  .h2-r {
+    font: var(--heading-2-r);
+  }
+
+  .h3-b {
+    font: var(--heading-3-b);
+  }
+  .h3-m {
+    font: var(--heading-3-m);
+  }
+  .h3-r {
+    font: var(--heading-3-r);
+  }
+
+  .h4-b {
+    font: var(--heading-4-b);
+  }
+  .h4-m {
+    font: var(--heading-4-m);
+  }
+  .h4-r {
+    font: var(--heading-4-r);
+  }
+
+  .h5-b {
+    font: var(--heading-5-b);
+  }
+  .h5-m {
+    font: var(--heading-5-m);
+  }
+  .h5-r {
+    font: var(--heading-5-r);
+  }
+
+  .h6-b {
+    font: var(--heading-6-b);
+  }
+  .h6-m {
+    font: var(--heading-6-m);
+  }
+  .h6-r {
+    font: var(--heading-6-r);
+  }
+
+  .b1-b {
+    font: var(--body-1-b);
+  }
+  .b1-m {
+    font: var(--body-1-m);
+  }
+  .b1-r {
+    font: var(--body-1-r);
+  }
+
+  .b2-b {
+    font: var(--body-2-b);
+  }
+  .b2-m {
+    font: var(--body-2-m);
+  }
+  .b2-r {
+    font: var(--body-2-r);
+  }
+
+  .f1-b {
+    font: var(--footer-1-b);
+  }
+  .f1-m {
+    font: var(--footer-1-m);
+  }
+  .f1-r {
+    font: var(--footer-1-r);
+  }
+
+  .f2-b {
+    font: var(--footer-2-b);
+  }
+  .f2-m {
+    font: var(--footer-2-m);
+  }
+  .f2-r {
+    font: var(--footer-2-r);
+  }
+}
