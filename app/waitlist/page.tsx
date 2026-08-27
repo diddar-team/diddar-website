@@ -1,27 +1,60 @@
-import { Footer, Header } from '@/components/site-shell';
+import type { Metadata } from 'next';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { Container } from '@/components/ui/container';
+import { HandLabel } from '@/components/ui/hand-label';
+import { WaitlistForm } from '@/components/waitlist/waitlist-form';
 
-export default function Waitlist() {
+export const metadata: Metadata = {
+  title: 'Add your name',
+  description:
+    'Tell us which track and level you want. Your answer shapes which Dida cohorts open first — and which mentors we bring in.',
+};
+
+export default async function WaitlistPage({
+  searchParams,
+}: PageProps<'/waitlist'>) {
+  const params = await searchParams;
+  const trackParam = typeof params.track === 'string' ? params.track : undefined;
+  const teachParam = params.teach === '1' || params.teach === 'true';
+
   return (
-    <main>
-      <Header />
-      <section className="waitlist-page page-wrap">
-        <div className="waitlist-intro">
-          <p className="eyebrow"><span /> THE FIRST STEP</p>
-          <h1>Tell us what<br /><em>you want to build.</em></h1>
-          <p>We are putting together the first TechUno cohorts around the people who are ready to learn. Share your direction and we will keep you close to what is next.</p>
-          <div className="waitlist-note"><span>✦</span><p><strong>Your answers shape the first cohort.</strong><br />We use interest to decide which stacks open first and which trainers we invite.</p></div>
-        </div>
-        <form className="waitlist-form" action="https://forms.google.com/" method="get">
-          <label>What should we call you?<input name="name" placeholder="Your full name" required /></label>
-          <label>Where can we reach you?<input name="email" type="email" placeholder="you@example.com" required /></label>
-          <fieldset><legend>Which path feels right? <small>Select all that apply</small></legend><div className="choice-grid"><label><input type="checkbox" name="track" value="frontend" /> <span>Frontend</span></label><label><input type="checkbox" name="track" value="backend" /> <span>Backend</span></label><label><input type="checkbox" name="track" value="builder" /> <span>Builder path</span></label><label><input type="checkbox" name="track" value="cloud" /> <span>Cloud & DevOps</span></label></div></fieldset>
-          <fieldset><legend>What is your current level?</legend><div className="choice-grid three"><label><input type="radio" name="level" value="beginner" required /> <span>Starting out</span></label><label><input type="radio" name="level" value="intermediate" /> <span>Some experience</span></label><label><input type="radio" name="level" value="advanced" /> <span>Very confident</span></label></div></fieldset>
-          <label>What are you hoping to change? <small>Optional</small><textarea name="goal" placeholder="A new role, a product idea, more confidence..." rows={3} /></label>
-          <button className="button" type="submit">Save my spot <span aria-hidden="true">↗</span></button>
-          <p className="form-footnote">By joining, you agree to receive occasional TechUno updates. No noise, just useful news.</p>
-        </form>
-      </section>
-      <Footer />
-    </main>
+    <>
+      <SiteHeader />
+      <main>
+        <Container className="grid gap-12 py-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:py-20">
+          <div className="lg:pt-4">
+            <HandLabel>the list</HandLabel>
+            <h1 className="mt-5 font-display text-[clamp(2.4rem,5vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.02em] text-text">
+              Add your name.
+            </h1>
+            <p className="mt-5 max-w-md font-sans text-[1.05rem] leading-relaxed text-text-light">
+              This is the whole plan. We read the list, open the tracks people
+              want, and bring in mentors for those stacks. No name, no cohort.
+            </p>
+
+            <ul className="mt-10 space-y-4 border-t border-stroke-ink/60 pt-8">
+              {[
+                ['Your pick counts as a vote', 'Track + level interest decides what opens first.'],
+                ['We only staff real demand', 'Mentors get invited for stacks people signed up for.'],
+                ['You hear it first', 'Dates, pricing and early-bird access go to the list before anyone else.'],
+              ].map(([t, d]) => (
+                <li key={t} className="flex gap-3">
+                  <span aria-hidden className="mt-1 text-primary">
+                    ✦
+                  </span>
+                  <p className="font-sans text-[0.92rem] leading-relaxed text-text-light">
+                    <span className="font-semibold text-text">{t}.</span> {d}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <WaitlistForm defaultTrack={trackParam} defaultTeach={teachParam} />
+        </Container>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
