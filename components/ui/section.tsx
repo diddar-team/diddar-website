@@ -67,14 +67,14 @@ export function SectionHeader({
 
       {aside && description ? (
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="h2-b max-w-xl text-text">{title}</h2>
+          <h2 className="h3-b max-w-xl text-text">{title}</h2>
           <div className="max-w-sm font-sans text-[0.96rem] leading-relaxed text-text-light">
             {description}
           </div>
         </div>
       ) : (
         <>
-          <h2 className="h2-b text-text">{title}</h2>
+          <h2 className="h3-b text-text">{title}</h2>
           {description && (
             <div className="mt-4 max-w-lg space-y-3 font-sans text-[1rem] leading-relaxed text-text-light">
               {description}

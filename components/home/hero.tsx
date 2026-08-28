@@ -20,8 +20,10 @@ export function Hero() {
       className="relative min-h-[90vh] overflow-hidden"
       style={{ background: 'var(--panel)' }}
     >
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
         <div
           className="orb-1 absolute -left-32 -top-24 h-[560px] w-[560px] rounded-full opacity-40"
           style={{
@@ -50,12 +52,12 @@ export function Hero() {
             backgroundImage: `linear-gradient(var(--text) 1px, transparent 1px),
               linear-gradient(90deg, var(--text) 1px, transparent 1px)`,
             backgroundSize: '64px 64px',
+            backgroundAttachment: 'scroll',
           }}
         />
       </div>
 
       <Container className="relative z-10 flex flex-col items-start justify-center pb-0 pt-20 lg:pt-28">
-
         <div
           className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
           style={{
@@ -72,16 +74,15 @@ export function Hero() {
           </span>
         </div>
 
-        <h1
-          className="h1-b max-w-3xl"
-          style={{ color: 'var(--text)' }}
-        >
+        <h1 className="h2-b max-w-3xl" style={{ color: 'var(--text)' }}>
           Learn the skill.
           <br />
           Then{' '}
           <span className="relative inline-block whitespace-nowrap">
             change the story.
-            <MarkUnderline style={{ color: 'var(--primary)' } as React.CSSProperties} />
+            <MarkUnderline
+              style={{ color: 'var(--primary)' } as React.CSSProperties}
+            />
           </span>
         </h1>
 
@@ -146,7 +147,6 @@ export function Hero() {
           background: 'transparent',
         }}
       >
-
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24"
           style={{

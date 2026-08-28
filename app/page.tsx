@@ -3,6 +3,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { Hero } from '@/components/home/hero';
 import { Premise } from '@/components/home/premise';
 import { TracksBoard } from '@/components/home/tracks-board';
+import { Toolbox } from '@/components/home/toolbox';
 import { Method } from '@/components/home/method';
 import { WhatsInside } from '@/components/home/whats-inside';
 import { Voices } from '@/components/home/voices';
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Hero />
         <Premise />
         <TracksBoard />
+        <Toolbox />
         <Method />
         <WhatsInside />
         <Voices />
