@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Caveat, DM_Sans, Fraunces } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
-// globals.css imports Tailwind + Mantine CSS in the right @layer order.
+
 import './globals.css';
 import { COLOR_SCHEME_KEY, Providers } from '@/components/providers';
 

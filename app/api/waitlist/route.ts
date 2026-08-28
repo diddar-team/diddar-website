@@ -3,8 +3,6 @@ import { validateWaitlist, waitlistSchema } from '@/lib/waitlist';
 
 export const runtime = 'nodejs';
 
-// Very light in-memory rate limit (per warm instance). Good enough to blunt
-// casual abuse; not a substitute for edge protection.
 const hits = new Map<string, { count: number; first: number }>();
 const WINDOW_MS = 60_000;
 const MAX_PER_WINDOW = 6;
@@ -56,7 +54,6 @@ export async function POST(request: Request) {
 
   const data = parsed.data;
 
-  // Honeypot filled → pretend success, drop silently.
   if (data.company && data.company.length > 0) {
     return NextResponse.json({ ok: true });
   }
@@ -73,12 +70,11 @@ export async function POST(request: Request) {
     kind: data.kind,
     name: data.name ?? '',
     email: data.email,
-    tracks: (data.tracks ?? []).join(', '),
+    track: data.track ?? '',
     level: data.level ?? '',
-    mode: data.mode ?? '',
+    mode: 'online',
     timezone: data.timezone ?? '',
     goal: data.goal ?? '',
-    wantsToTeach: data.wantsToTeach ? 'yes' : 'no',
     hearAbout: data.hearAbout ?? '',
     source: 'website',
     timestamp: new Date().toISOString(),
@@ -87,7 +83,6 @@ export async function POST(request: Request) {
   const webhook = process.env.WAITLIST_WEBHOOK_URL;
 
   if (!webhook) {
-    // Dev fallback: no sheet wired yet. Keep the UX working.
     console.info('[waitlist] no WAITLIST_WEBHOOK_URL set — logging only:', payload);
     return NextResponse.json({ ok: true });
   }
@@ -97,7 +92,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      // Apps Script web apps redirect; follow it.
+
       redirect: 'follow',
     });
     if (!res.ok) {

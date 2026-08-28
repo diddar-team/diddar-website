@@ -16,7 +16,6 @@ export default async function WaitlistPage({
 }: PageProps<'/waitlist'>) {
   const params = await searchParams;
   const trackParam = typeof params.track === 'string' ? params.track : undefined;
-  const teachParam = params.teach === '1' || params.teach === 'true';
 
   return (
     <>
@@ -25,7 +24,7 @@ export default async function WaitlistPage({
         <Container className="grid gap-12 py-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:py-20">
           <div className="lg:pt-4">
             <HandLabel>the list</HandLabel>
-            <h1 className="mt-5 font-display text-[clamp(2.4rem,5vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.02em] text-text">
+            <h1 className="h1-b mt-5 text-text">
               Add your name.
             </h1>
             <p className="mt-5 max-w-md font-sans text-[1.05rem] leading-relaxed text-text-light">
@@ -33,7 +32,7 @@ export default async function WaitlistPage({
               want, and bring in mentors for those stacks. No name, no cohort.
             </p>
 
-            <ul className="mt-10 space-y-4 border-t border-stroke-ink/60 pt-8">
+            <ul className="mt-10 space-y-4 border-t border-stroke/60 pt-8">
               {[
                 ['Your pick counts as a vote', 'Track + level interest decides what opens first.'],
                 ['We only staff real demand', 'Mentors get invited for stacks people signed up for.'],
@@ -51,7 +50,7 @@ export default async function WaitlistPage({
             </ul>
           </div>
 
-          <WaitlistForm defaultTrack={trackParam} defaultTeach={teachParam} />
+          <WaitlistForm defaultTrack={trackParam} />
         </Container>
       </main>
       <SiteFooter />

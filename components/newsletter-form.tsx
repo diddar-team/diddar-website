@@ -38,7 +38,7 @@ export function NewsletterForm({ className }: { className?: string }) {
 
   if (state === 'done') {
     return (
-      <p className={cn('text-sm font-medium text-success', className)}>
+      <p className={cn('text-sm font-medium text-white/80', className)}>
         {message}
       </p>
     );
@@ -54,7 +54,7 @@ export function NewsletterForm({ className }: { className?: string }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
           aria-label="Email address"
-          className="h-11 w-full rounded-input border border-stroke-ink/60 bg-surface px-3 font-sans text-sm text-text outline-none transition-colors placeholder:text-muted focus:border-primary"
+          className="h-11 w-full rounded-input border border-white/15 bg-white/5 px-3 font-sans text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-white/40"
         />
         <button
           type="submit"
@@ -65,7 +65,7 @@ export function NewsletterForm({ className }: { className?: string }) {
         </button>
       </div>
       {state === 'error' && (
-        <p className="text-xs font-medium text-error">{message}</p>
+        <p className="text-xs font-medium text-white/70">{message}</p>
       )}
     </form>
   );

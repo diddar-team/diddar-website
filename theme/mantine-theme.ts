@@ -4,7 +4,6 @@ import {
   type MantineColorsTuple,
 } from '@mantine/core';
 
-/** Brand scale — Electric Royal Blue (#173FEA near index 6). */
 const brand: MantineColorsTuple = [
   '#eef2ff',
   '#dbe2ff',
@@ -18,7 +17,6 @@ const brand: MantineColorsTuple = [
   '#001f8f',
 ];
 
-/** Accent scale — Warm Coral (#F36B42 near index 6). */
 const coral: MantineColorsTuple = [
   '#fff1ec',
   '#ffe0d6',
@@ -46,8 +44,6 @@ export const mantineTheme = createTheme({
   focusRing: 'auto',
 });
 
-/** Bridge Mantine's core surface variables to the Dida token set so every
- *  Mantine component follows the palette and flips with our tokens in dark. */
 export const cssVariablesResolver: CSSVariablesResolver = () => ({
   variables: {
     '--mantine-color-body': 'var(--background)',
@@ -57,7 +53,7 @@ export const cssVariablesResolver: CSSVariablesResolver = () => ({
     '--mantine-color-dimmed': 'var(--text-light)',
     '--mantine-color-anchor': 'var(--primary)',
     '--mantine-color-default': 'var(--surface)',
-    '--mantine-color-default-hover': 'var(--subtle-surface)',
+    '--mantine-color-default-hover': 'var(--panel)',
     '--mantine-color-default-color': 'var(--text)',
     '--mantine-color-default-border': 'var(--stroke)',
   },

@@ -1,43 +1,75 @@
 import { Container } from '@/components/ui/container';
 import { ButtonLink } from '@/components/ui/button';
-import { MarkArrow } from '@/components/marks';
 import { Reveal } from '@/components/reveal';
 
 export function SignUp() {
   return (
-    <Container className="pb-24 pt-4">
+    <Container className="pb-28 pt-4">
       <Reveal>
-        <div className="relative overflow-hidden rounded-app border border-stroke-ink/60 bg-surface p-8 shadow-[0_24px_60px_-30px_rgb(11_22_63/0.35)] sm:p-14">
-          {/* ruled lines like a sheet of paper */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                'repeating-linear-gradient(var(--stroke-ink) 0 1px, transparent 1px 2.4rem)',
-              backgroundPosition: '0 5rem',
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-10 w-px bg-primary/30 sm:left-16"
-          />
 
-          <div className="relative max-w-xl">
-            <p className="font-hand text-2xl text-primary">Sign the list</p>
-            <h2 className="mt-3 font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-text">
-              Add your name, tell us what you want to learn.
-            </h2>
-            <p className="mt-4 font-sans leading-relaxed text-text-light">
-              It takes two minutes and no account. You will hear from us when the
-              track you picked is ready to open.
-            </p>
-            <div className="mt-8 flex items-center gap-4">
-              <ButtonLink href="/waitlist" size="lg">
-                Add my name to the list
-                <span aria-hidden>→</span>
-              </ButtonLink>
-              <MarkArrow className="h-12 w-12 rotate-[100deg] text-primary" />
+        <div className="gradient-border relative overflow-hidden rounded-[20px]">
+
+          <div
+            className="relative overflow-hidden rounded-[18px] p-10 sm:p-16"
+            style={{ background: 'var(--panel)' }}
+          >
+
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-24 -top-24 h-[360px] w-[360px] rounded-full opacity-40"
+              style={{
+                background: `radial-gradient(circle, var(--primary) 0%, transparent 70%)`,
+                filter: 'blur(60px)',
+              }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-16 -left-16 h-[280px] w-[280px] rounded-full opacity-30"
+              style={{
+                background: `radial-gradient(circle, var(--accent) 0%, transparent 70%)`,
+                filter: 'blur(60px)',
+              }}
+            />
+
+            <div className="relative max-w-xl">
+
+              <div
+                className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2"
+                style={{
+                  border: '1px solid var(--stroke)',
+                  background: 'var(--brand-soft)',
+                }}
+              >
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4ade80]" />
+                <span
+                  className="font-sans text-[0.75rem] font-medium"
+                  style={{ color: 'var(--primary)' }}
+                >
+                  Sign the list
+                </span>
+              </div>
+
+              <h2
+                className="h2-b"
+                style={{ color: 'var(--text)' }}
+              >
+                Add your name, tell us what you want to learn.
+              </h2>
+
+              <p
+                className="mt-4 font-sans text-[1rem] leading-relaxed"
+                style={{ color: 'var(--text-light)' }}
+              >
+                It takes two minutes and no account. You will hear from us when
+                the track you picked is ready to open.
+              </p>
+
+              <div className="mt-8">
+                <ButtonLink href="/waitlist" size="lg" className="btn-glow">
+                  Add my name to the list
+                  <span aria-hidden>→</span>
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </div>

@@ -22,24 +22,24 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 transition-colors duration-200',
+        'sticky top-0 z-50 transition-all duration-300',
         scrolled
-          ? 'border-b border-stroke-ink/60 bg-background/85 backdrop-blur-md'
+          ? 'border-b border-stroke/40 bg-background/80 shadow-[0_1px_24px_-8px_rgba(11,22,63,0.1)] backdrop-blur-xl'
           : 'border-b border-transparent',
       )}
     >
-      <div className="mx-auto flex h-[72px] w-full max-w-[1120px] items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex h-[68px] w-full max-w-[1120px] items-center justify-between gap-6 px-5 sm:px-8">
         <BrandLockup />
 
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center rounded-full border border-stroke/50 bg-surface/60 px-2 py-1 backdrop-blur-sm md:flex"
         >
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-sans text-[0.9rem] font-medium text-text-light transition-colors hover:text-text"
+              className="rounded-full px-4 py-1.5 font-sans text-[0.875rem] font-medium text-text-light transition-all hover:bg-panel hover:text-text"
             >
               {item.label}
             </Link>
@@ -79,7 +79,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               onClick={close}
-              className="rounded-input px-3 py-3 font-display text-xl font-semibold text-text transition-colors hover:bg-subtle-surface"
+              className="rounded-input px-3 py-3 font-display text-xl font-semibold text-text transition-colors hover:bg-panel"
             >
               {item.label}
             </Link>

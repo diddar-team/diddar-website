@@ -2,8 +2,6 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { MarkStar } from '@/components/marks';
 
-/** Small handwritten section marker — "✦ the next cohort". Understated:
- *  slate text with a small blue star. */
 export function HandLabel({
   children,
   className,

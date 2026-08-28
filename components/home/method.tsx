@@ -1,5 +1,4 @@
-import { Container } from '@/components/ui/container';
-import { HandLabel } from '@/components/ui/hand-label';
+import { SectionBlock } from '@/components/ui/section';
 import { Reveal } from '@/components/reveal';
 
 const STEPS = [
@@ -8,63 +7,77 @@ const STEPS = [
     title: 'Tell us your direction',
     body: 'Add your name, pick a track and your level. Two minutes, no account.',
     note: 'this part is on you',
+    icon: '✦',
   },
   {
     n: '02',
     title: 'We shape the cohort',
     body: 'We read the list, open the tracks with real demand, and bring in mentors who work in that stack.',
     note: 'this part is on us',
+    icon: '◈',
   },
   {
     n: '03',
     title: 'You start building',
     body: 'Join your cohort, work through real projects with feedback, and leave with something you can show.',
     note: "then it's on you again",
+    icon: '⬟',
   },
 ];
 
 export function Method() {
   return (
-    <section id="how" className="scroll-mt-24 py-20 sm:py-28">
-      <Container>
-        <div className="max-w-2xl">
-          <HandLabel>how it works</HandLabel>
-          <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.06] tracking-[-0.02em] text-text">
-            No guesswork. Three steps.
-          </h2>
-        </div>
+    <SectionBlock
+      id="how"
+      eyebrow="How it works"
+      title="No guesswork. Three steps."
+      headerClassName="mb-16"
+    >
+      <ol className="relative grid auto-rows-fr gap-px [&>*]:h-full sm:grid-cols-3">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-stroke to-transparent sm:block"
+        />
 
-        <ol className="mt-14 space-y-12">
-          {STEPS.map((step, i) => (
-            <Reveal as="li" key={step.n} delay={i * 80}>
-              <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-8">
-                <div className="flex items-start gap-4 sm:flex-col sm:items-center">
-                  <span className="font-display text-[2.75rem] font-semibold leading-none text-primary sm:text-[3.5rem]">
+        {STEPS.map((step, i) => (
+          <Reveal as="li" key={step.n} delay={i * 100}>
+            <div className="group relative flex h-full flex-col gap-5 rounded-2xl border border-stroke bg-surface p-6 shadow-[0_2px_20px_-8px_rgba(11,22,63,0.08)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.18)]">
+              <div className="flex items-center gap-4">
+                <span className="relative font-display text-[3rem] font-semibold leading-none text-stroke">
+                  {step.n}
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 font-display text-[3rem] font-semibold leading-none text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  >
                     {step.n}
                   </span>
-                  {i < STEPS.length - 1 && (
-                    <span
-                      aria-hidden
-                      className="mt-2 hidden h-full w-px border-l-2 border-dashed border-stroke-ink sm:block"
-                    />
-                  )}
-                </div>
-                <div className="max-w-xl pb-2">
-                  <h3 className="font-display text-[1.4rem] font-semibold text-text">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 font-sans leading-relaxed text-text-light">
-                    {step.body}
-                  </p>
-                  <p className="mt-2 font-hand text-lg text-text-light">
-                    — {step.note}
-                  </p>
-                </div>
+                </span>
+                <span
+                  aria-hidden
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-brand-soft bg-brand-soft text-[1.1rem] text-primary"
+                >
+                  {step.icon}
+                </span>
               </div>
-            </Reveal>
-          ))}
-        </ol>
-      </Container>
-    </section>
+
+              <div>
+                <h3 className="h4-b text-text">{step.title}</h3>
+                <p className="mt-2 font-sans text-[0.92rem] leading-relaxed text-text-light">
+                  {step.body}
+                </p>
+                <p className="mt-3 font-hand text-base text-muted">
+                  — {step.note}
+                </p>
+              </div>
+
+              <div
+                aria-hidden
+                className="absolute -top-[5px] left-6 hidden h-2.5 w-2.5 rounded-full border-2 border-background bg-primary sm:block"
+              />
+            </div>
+          </Reveal>
+        ))}
+      </ol>
+    </SectionBlock>
   );
 }

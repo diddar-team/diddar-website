@@ -1,95 +1,66 @@
-/* -------------------------------------------------------------------------- */
-/*  Dida design tokens                                                         */
-/*  Fonts: next/font (app/layout.tsx) → --font-fraunces / --font-dm-sans /      */
-/*  --font-caveat. Light is the default scheme; dark is opt-in and owned by     */
-/*  Mantine via [data-mantine-color-scheme='dark'] on <html>.                   */
-/* -------------------------------------------------------------------------- */
-
 :root {
   color-scheme: light;
 
-  /* Brand — Electric Royal Blue */
   --primary: #173fea;
   --primary-dark: #0a2bba;
   --primary-light: #315cff;
-  --brand-soft: #e8edff; /* Ice Blue */
-  --brand-subtle: #f3f6ff; /* Mist Blue */
 
-  /* Accent — Warm Coral */
   --accent: #f36b42;
   --accent-dark: #d8542e;
-  --accent-soft: #fde9e1; /* Peach */
 
-  /* Ink */
-  --text: #0b163f; /* Midnight Navy */
-  --text-light: #53617a; /* Slate Navy */
-  --muted: #8490a6; /* Cool Grey */
+  --ink: #0b163f;
 
-  /* Paper */
+  --text: #0b163f;
+  --text-light: #53617a;
+  --muted: #8490a6;
+
+  --background: #fcfbf8;
   --surface: #ffffff;
-  --background: #fcfbf8; /* Soft White */
-  --subtle-surface: #f4f5f9; /* derived — cool paper */
-  --paper-tint: #fbf6f1; /* derived — warm paper for cards */
-  --stroke: #e7eaf0; /* Pale Grey */
-  --stroke-ink: #d7d3cb; /* derived — hand-ruled hairline */
+  --panel: #eef1f7;
+  --brand-soft: #e7ecfd;
+  --stroke: #e4e7f1;
 
-  /* Status */
   --success: #22a06b;
-  --success-soft: #dcf3ea;
   --warning: #f5a623;
   --error: #dc3545;
-  --error-soft: #fbe3e5;
 
-  /* Gradients */
-  --gradient-hero-1: linear-gradient(135deg, #0a2bba 0%, #315cff 100%);
-  --gradient-hero-2: linear-gradient(135deg, #f3f6ff 0%, #e8edff 100%);
+  --glass-bg: rgb(255 255 255 / 0.65);
+  --glass-border: rgb(11 22 63 / 0.08);
 
-  /* Fonts */
-  --font-app-font:
-    var(--font-fraunces), 'Fraunces', ui-serif, Georgia, 'Times New Roman',
-    serif;
-  --font-secondary-font:
-    var(--font-dm-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-hand: var(--font-caveat), 'Caveat', 'Bradley Hand', cursive;
+  --font-app-font: var(--font-fraunces), 'Fraunces', ui-serif, Georgia, serif;
+  --font-secondary-font: var(--font-dm-sans), 'DM Sans', ui-sans-serif,
+    system-ui, sans-serif;
+  --font-hand: var(--font-caveat), 'Caveat', cursive;
 
-  /* Type scale — display = the serif, body = the sans */
-  --heading-1-b: 600 clamp(2.5rem, 2vw + 2rem, 4.25rem) / 1.04
+  --heading-1-b: 600 clamp(2.75rem, 3.4vw + 1.6rem, 5rem) / 1.03
     var(--font-app-font);
-  --heading-1-m: 500 clamp(2.5rem, 2vw + 2rem, 4.25rem) / 1.04
+  --heading-1-m: 500 clamp(2.75rem, 3.4vw + 1.6rem, 5rem) / 1.03
     var(--font-app-font);
-
-  --heading-2-b: 600 clamp(2rem, 1.4vw + 1.6rem, 3rem) / 1.08
+  --heading-2-b: 600 clamp(2rem, 2.4vw + 1.1rem, 3.15rem) / 1.08
     var(--font-app-font);
-  --heading-2-m: 500 clamp(2rem, 1.4vw + 1.6rem, 3rem) / 1.08
+  --heading-2-m: 500 clamp(2rem, 2.4vw + 1.1rem, 3.15rem) / 1.08
     var(--font-app-font);
-
-  --heading-3-b: 600 clamp(1.5rem, 0.8vw + 1.25rem, 2.1rem) / 1.14
+  --heading-3-b: 600 clamp(1.5rem, 1vw + 1.15rem, 2.1rem) / 1.14
     var(--font-app-font);
-  --heading-3-m: 500 clamp(1.5rem, 0.8vw + 1.25rem, 2.1rem) / 1.14
+  --heading-3-m: 500 clamp(1.5rem, 1vw + 1.15rem, 2.1rem) / 1.14
     var(--font-app-font);
-
-  --heading-4-b: 600 clamp(1.25rem, 0.5vw + 1.1rem, 1.6rem) / 1.2
+  --heading-4-b: 600 clamp(1.2rem, 0.5vw + 1.05rem, 1.5rem) / 1.2
     var(--font-app-font);
-  --heading-4-m: 500 clamp(1.25rem, 0.5vw + 1.1rem, 1.6rem) / 1.2
+  --heading-4-m: 500 clamp(1.2rem, 0.5vw + 1.05rem, 1.5rem) / 1.2
     var(--font-app-font);
-
-  --heading-5-b: 600 clamp(1.125rem, 0.4vw + 1rem, 1.35rem) / 1.3
+  --heading-5-b: 600 clamp(1.1rem, 0.3vw + 1rem, 1.3rem) / 1.3
     var(--font-app-font);
   --heading-6-b: 600 1rem / 1.4 var(--font-app-font);
 
   --body-1-b: 600 1.0625rem / 1.6 var(--font-secondary-font);
   --body-1-m: 500 1.0625rem / 1.6 var(--font-secondary-font);
   --body-1-r: 400 1.0625rem / 1.6 var(--font-secondary-font);
-
   --body-2-b: 600 0.9375rem / 1.55 var(--font-secondary-font);
   --body-2-m: 500 0.9375rem / 1.55 var(--font-secondary-font);
   --body-2-r: 400 0.9375rem / 1.55 var(--font-secondary-font);
+  --label-b: 600 0.72rem / 1.3 var(--font-secondary-font);
 
-  --label-b: 600 0.75rem / 1.3 var(--font-secondary-font);
-
-  /* Radii */
   --app-radius: 18px;
-  --card-radius: 14px;
   --button-radius: 999px;
   --input-radius: 10px;
 }
@@ -100,76 +71,63 @@
   --primary: #4b6dff;
   --primary-dark: #315cff;
   --primary-light: #8aa0ff;
-  --brand-soft: rgb(75 109 255 / 0.22);
-  --brand-subtle: rgb(75 109 255 / 0.12);
 
   --accent: #ff7e52;
   --accent-dark: #f36b42;
-  --accent-soft: rgb(243 107 66 / 0.18);
 
   --text: #eef1fa;
   --text-light: #a7b0c4;
   --muted: #6e7a93;
 
-  --surface: #141a2e;
   --background: #0c1020;
-  --subtle-surface: #1a2137;
-  --paper-tint: #181d30;
+  --surface: #141a2e;
+  --panel: #070d1c;
+  --brand-soft: rgb(75 109 255 / 0.16);
   --stroke: #29314c;
-  --stroke-ink: #333c58;
 
-  --success-soft: rgb(34 160 107 / 0.2);
-  --error-soft: rgb(220 53 69 / 0.2);
-
-  --gradient-hero-2: linear-gradient(135deg, #1a2137 0%, #141a2e 100%);
+  --glass-bg: rgb(20 26 46 / 0.72);
+  --glass-border: rgb(255 255 255 / 0.09);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-subtle-surface: var(--subtle-surface);
-  --color-paper-tint: var(--paper-tint);
   --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
   --color-text: var(--text);
   --color-text-light: var(--text-light);
   --color-muted: var(--muted);
   --color-stroke: var(--stroke);
-  --color-stroke-ink: var(--stroke-ink);
+  --color-brand-soft: var(--brand-soft);
 
   --color-primary: var(--primary);
-  --color-primary-light: var(--primary-light);
   --color-primary-dark: var(--primary-dark);
-  --color-brand-soft: var(--brand-soft);
-  --color-brand-subtle: var(--brand-subtle);
-
+  --color-primary-light: var(--primary-light);
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
-  --color-accent-soft: var(--accent-soft);
 
   --color-success: var(--success);
-  --color-success-soft: var(--success-soft);
   --color-warning: var(--warning);
   --color-error: var(--error);
-  --color-error-soft: var(--error-soft);
 
   --font-sans: var(--font-secondary-font);
   --font-display: var(--font-app-font);
   --font-hand: var(--font-hand);
 
   --radius-app: var(--app-radius);
-  --radius-card: var(--card-radius);
   --radius-btn: var(--button-radius);
   --radius-input: var(--input-radius);
 }
 
 @layer components {
-  .h1-b { font: var(--heading-1-b); }
-  .h1-m { font: var(--heading-1-m); }
-  .h2-b { font: var(--heading-2-b); }
-  .h2-m { font: var(--heading-2-m); }
-  .h3-b { font: var(--heading-3-b); }
-  .h3-m { font: var(--heading-3-m); }
-  .h4-b { font: var(--heading-4-b); }
-  .h4-m { font: var(--heading-4-m); }
+  .h1-b { font: var(--heading-1-b); letter-spacing: -0.03em; }
+  .h1-m { font: var(--heading-1-m); letter-spacing: -0.03em; }
+  .h2-b { font: var(--heading-2-b); letter-spacing: -0.02em; }
+  .h2-m { font: var(--heading-2-m); letter-spacing: -0.02em; }
+  .h3-b { font: var(--heading-3-b); letter-spacing: -0.015em; }
+  .h3-m { font: var(--heading-3-m); letter-spacing: -0.015em; }
+  .h4-b { font: var(--heading-4-b); letter-spacing: -0.01em; }
+  .h4-m { font: var(--heading-4-m); letter-spacing: -0.01em; }
   .h5-b { font: var(--heading-5-b); }
   .h6-b { font: var(--heading-6-b); }
   .b1-b { font: var(--body-1-b); }
@@ -178,4 +136,9 @@
   .b2-b { font: var(--body-2-b); }
   .b2-m { font: var(--body-2-m); }
   .b2-r { font: var(--body-2-r); }
+  .label-b {
+    font: var(--label-b);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
 }

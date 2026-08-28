@@ -1,89 +1,176 @@
+'use client';
+
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { LEVELS, type Track, accentClasses } from '@/lib/tracks';
+import { COHORT_LENGTH, LEVELS, type Track } from '@/lib/tracks';
 
-/** A track rendered as a pinned index card. */
+const TRACK_ICONS: Record<string, string> = {
+  frontend: '⬡',
+  backend: '◈',
+  fullstack: '⬟',
+  'ai-for-developers': '⬢',
+  mobile: '◉',
+  'data-analytics': '◆',
+};
+
 export function IndexCard({
   track,
-  tilt = 0,
   className,
 }: {
   track: Track;
-  tilt?: number;
   className?: string;
 }) {
-  const accent = accentClasses[track.accent];
-
   return (
     <Link
       href={`/waitlist?track=${track.slug}`}
-      style={{ '--tilt': `${tilt}deg` } as React.CSSProperties}
       className={cn(
-        'group/card relative flex h-full flex-col rounded-card border border-stroke-ink/70 bg-surface p-6 pt-7 shadow-[0_1px_0_rgb(11_22_63/0.04),0_18px_36px_-24px_rgb(11_22_63/0.28)] transition-[transform,rotate] duration-300 [rotate:var(--tilt)] hover:z-10 hover:-translate-y-1.5 hover:[rotate:0deg]',
+        'group/card relative flex h-full flex-col overflow-hidden rounded-2xl p-6 backdrop-blur-sm',
+        'transition-all duration-300',
         className,
       )}
+      style={{
+        background: 'var(--surface)',
+        border: '1px solid var(--stroke)',
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.borderColor = 'var(--primary)';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 24px 60px -20px color-mix(in srgb, var(--primary) 28%, transparent)';
+        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.borderColor = 'var(--stroke)';
+        (e.currentTarget as HTMLElement).style.boxShadow = '';
+        (e.currentTarget as HTMLElement).style.transform = '';
+      }}
     >
-      {/* pin */}
-      <span
-        aria-hidden
-        className={cn(
-          'absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full ring-4 ring-background',
-          accent.pin,
-        )}
-      />
-      {/* tab */}
-      <span
-        className={cn(
-          'absolute -right-1.5 top-5 rounded-sm px-2 py-1 font-sans text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-sm [rotate:2deg]',
-          accent.tab,
-        )}
-      >
-        {track.duration.replace('~', '')}
-      </span>
 
-      <h3 className="h4-b max-w-[85%] text-text">{track.name}</h3>
-      <p className="mt-1 font-hand text-lg leading-tight text-text-light">
+      <div
+        className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl opacity-60 transition-opacity duration-300 group-hover/card:opacity-100"
+        style={{
+          background: `linear-gradient(to right, var(--primary), var(--primary), transparent)`,
+        }}
+      />
+
+      <div className="mb-5 flex items-center justify-between">
+        <span
+          className="grid h-10 w-10 place-items-center rounded-xl text-[1.2rem] transition-colors"
+          style={{
+            border: '1px solid var(--stroke)',
+            background: 'var(--brand-soft)',
+            color: 'var(--primary)',
+          }}
+          aria-hidden
+        >
+          {TRACK_ICONS[track.slug] ?? '◆'}
+        </span>
+        <span
+          className="rounded-full px-3 py-1 font-sans text-[0.68rem] font-bold uppercase tracking-[0.12em]"
+          style={{
+            border: '1px solid var(--stroke)',
+            background: 'var(--brand-soft)',
+            color: 'var(--text-light)',
+          }}
+        >
+          {COHORT_LENGTH}
+        </span>
+      </div>
+
+      <h3
+        className="h4-b"
+        style={{ color: 'var(--text)' }}
+      >
+        {track.name}
+      </h3>
+      <p
+        className="mt-1 font-sans text-[0.82rem] font-medium"
+        style={{ color: 'var(--primary)' }}
+      >
         {track.tagline}
       </p>
 
-      <p className="mt-3 text-[0.9rem] leading-relaxed text-text-light">
+      <p
+        className="mt-3 flex-1 font-sans text-[0.9rem] leading-relaxed"
+        style={{ color: 'var(--text-light)' }}
+      >
         {track.blurb}
       </p>
 
-      <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1.5">
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {track.stack.slice(0, 4).map((s) => (
+          <span
+            key={s}
+            className="rounded-md px-2.5 py-1 font-sans text-[0.7rem] font-medium"
+            style={{
+              border: '1px solid var(--stroke)',
+              background: 'var(--brand-soft)',
+              color: 'var(--text-light)',
+            }}
+          >
+            {s}
+          </span>
+        ))}
+        {track.stack.length > 4 && (
+          <span
+            className="rounded-md px-2.5 py-1 font-sans text-[0.7rem] font-medium"
+            style={{
+              border: '1px solid var(--stroke)',
+              background: 'var(--brand-soft)',
+              color: 'var(--text-light)',
+              opacity: 0.6,
+            }}
+          >
+            +{track.stack.length - 4}
+          </span>
+        )}
+      </div>
+
+      <div className="mt-4 flex gap-2">
         {LEVELS.map((lvl) => {
           const on = track.levels.includes(lvl.id);
           return (
             <span
               key={lvl.id}
               className={cn(
-                'inline-flex items-center gap-1.5 font-sans text-[0.78rem] font-medium',
-                on ? 'text-text' : 'text-muted line-through decoration-muted/50',
+                'rounded-full px-2.5 py-0.5 font-sans text-[0.68rem] font-semibold',
+                !on && 'line-through opacity-40',
               )}
+              style={
+                on
+                  ? {
+                      background: 'var(--brand-soft)',
+                      color: 'var(--primary)',
+                    }
+                  : { color: 'var(--text-light)' }
+              }
             >
-              <span
-                aria-hidden
-                className={cn(
-                  'grid h-3.5 w-3.5 place-items-center rounded-[3px] border text-[0.6rem]',
-                  on
-                    ? 'border-text bg-text text-background'
-                    : 'border-stroke-ink',
-                )}
-              >
-                {on ? '✓' : ''}
-              </span>
               {lvl.label}
             </span>
           );
         })}
       </div>
 
-      <span className="mt-6 inline-flex items-center gap-1.5 font-sans text-[0.82rem] font-semibold text-text transition-colors group-hover/card:text-primary">
-        Add my name to this one
-        <span aria-hidden className="transition-transform group-hover/card:translate-x-0.5">
+      <div
+        className="mt-6 flex items-center justify-between border-t pt-4"
+        style={{ borderColor: 'var(--stroke)' }}
+      >
+        <span
+          className="font-sans text-[0.82rem] font-semibold transition-colors group-hover/card:text-text"
+          style={{ color: 'var(--text-light)' }}
+        >
+          Add my name
+        </span>
+        <span
+          aria-hidden
+          className="grid h-7 w-7 place-items-center rounded-full text-[0.85rem] transition-all group-hover/card:translate-x-0.5"
+          style={{
+            border: '1px solid var(--stroke)',
+            background: 'var(--brand-soft)',
+            color: 'var(--text-light)',
+          }}
+        >
           →
         </span>
-      </span>
+      </div>
     </Link>
   );
 }

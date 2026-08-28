@@ -9,8 +9,6 @@ import {
 } from 'react';
 import { cn } from '@/lib/utils';
 
-/** Fades + lifts its children into view once. Content is visible by default
- *  (see `.js .reveal` in globals.css) so it degrades safely without JS. */
 export function Reveal({
   as: Tag = 'div',
   delay = 0,
@@ -22,16 +20,14 @@ export function Reveal({
   className?: string;
   children: ReactNode;
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
     if (shown) return;
-    const node: Element | null = ref.current;
+    const node = ref.current;
     if (!node) return;
 
-    // Safety net: never leave content hidden, even if the observer never fires.
     const fallback = setTimeout(() => setShown(true), 1600);
 
     if (!('IntersectionObserver' in window)) {

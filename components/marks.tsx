@@ -1,15 +1,15 @@
+import type { CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
 
-/* Hand-drawn marks. Stroke is `currentColor`; set the colour on the wrapper.
-   Default is the brand blue — coral is reserved for a couple of deliberate
-   highlight moments and is passed in explicitly. Decorative: aria-hidden. */
+type MarkProps = { className?: string; style?: CSSProperties };
 
-export function MarkUnderline({ className }: { className?: string }) {
+export function MarkUnderline({ className, style }: MarkProps) {
   return (
     <svg
       viewBox="0 0 300 16"
       preserveAspectRatio="none"
       aria-hidden
+      style={style}
       className={cn(
         'pointer-events-none absolute inset-x-0 -bottom-[0.15em] h-[0.34em] w-full text-primary',
         className,
@@ -33,12 +33,13 @@ export function MarkUnderline({ className }: { className?: string }) {
   );
 }
 
-export function MarkCircle({ className }: { className?: string }) {
+export function MarkCircle({ className, style }: MarkProps) {
   return (
     <svg
       viewBox="0 0 220 90"
       preserveAspectRatio="none"
       aria-hidden
+      style={style}
       className={cn(
         'pointer-events-none absolute -inset-x-4 -inset-y-2 h-[calc(100%+1rem)] w-[calc(100%+2rem)] text-primary',
         className,
@@ -55,11 +56,12 @@ export function MarkCircle({ className }: { className?: string }) {
   );
 }
 
-export function MarkArrow({ className }: { className?: string }) {
+export function MarkArrow({ className, style }: MarkProps) {
   return (
     <svg
       viewBox="0 0 90 70"
       aria-hidden
+      style={style}
       className={cn('h-14 w-16 text-primary', className)}
       fill="none"
     >
@@ -79,11 +81,12 @@ export function MarkArrow({ className }: { className?: string }) {
   );
 }
 
-export function MarkStar({ className }: { className?: string }) {
+export function MarkStar({ className, style }: MarkProps) {
   return (
     <svg
       viewBox="0 0 40 40"
       aria-hidden
+      style={style}
       className={cn('h-5 w-5 text-primary', className)}
       fill="none"
     >
@@ -97,11 +100,12 @@ export function MarkStar({ className }: { className?: string }) {
   );
 }
 
-export function MarkCorner({ className }: { className?: string }) {
+export function MarkCorner({ className, style }: MarkProps) {
   return (
     <svg
       viewBox="0 0 60 60"
       aria-hidden
+      style={style}
       className={cn('h-8 w-8 text-primary', className)}
       fill="none"
     >

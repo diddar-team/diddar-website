@@ -7,6 +7,7 @@ import { Method } from '@/components/home/method';
 import { WhatsInside } from '@/components/home/whats-inside';
 import { Voices } from '@/components/home/voices';
 import { Faq } from '@/components/home/faq';
+import { Scholarship } from '@/components/home/scholarship';
 import { SignUp } from '@/components/home/sign-up';
 
 export default function HomePage() {
@@ -21,6 +22,7 @@ export default function HomePage() {
         <WhatsInside />
         <Voices />
         <Faq />
+        <Scholarship />
         <SignUp />
       </main>
       <SiteFooter />

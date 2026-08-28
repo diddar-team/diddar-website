@@ -7,8 +7,6 @@ type ClassValue =
   | ClassValue[]
   | Record<string, boolean | null | undefined>;
 
-/** Small classnames joiner. User-supplied classes should be passed last so
- *  they take precedence in source order. */
 export function cn(...inputs: ClassValue[]): string {
   const out: string[] = [];
 

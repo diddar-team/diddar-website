@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Checkbox, Select, Switch, Textarea, TextInput } from '@mantine/core';
+import { Checkbox, Select, Textarea, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { LEVELS, TRACKS } from '@/lib/tracks';
-import { HEAR_ABOUT, LEARNING_MODES } from '@/lib/waitlist';
-import { cn } from '@/lib/utils';
+import { HEAR_ABOUT } from '@/lib/waitlist';
 
 const TIMEZONES = [
   'West Africa (WAT / GMT+1)',
@@ -21,24 +20,16 @@ const TIMEZONES = [
 type Values = {
   name: string;
   email: string;
-  tracks: string[];
+  track: string;
   level: string;
-  mode: string;
   timezone: string;
   goal: string;
-  wantsToTeach: boolean;
   hearAbout: string;
   consent: boolean;
   company: string;
 };
 
-export function WaitlistForm({
-  defaultTrack,
-  defaultTeach = false,
-}: {
-  defaultTrack?: string;
-  defaultTeach?: boolean;
-}) {
+export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState('');
 
@@ -46,15 +37,13 @@ export function WaitlistForm({
     initialValues: {
       name: '',
       email: '',
-      tracks:
+      track:
         defaultTrack && TRACKS.some((t) => t.slug === defaultTrack)
-          ? [defaultTrack]
-          : [],
+          ? defaultTrack
+          : '',
       level: '',
-      mode: '',
       timezone: '',
       goal: '',
-      wantsToTeach: defaultTeach,
       hearAbout: '',
       consent: false,
       company: '',
@@ -65,7 +54,7 @@ export function WaitlistForm({
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())
           ? null
           : 'Enter a valid email address',
-      tracks: (v) => (v.length === 0 ? 'Pick at least one track' : null),
+      track: (v) => (!v ? 'Pick a track you are interested in' : null),
       level: (v) => (v ? null : 'Select your current level'),
       consent: (v) => (v ? null : 'Please accept to continue'),
     },
@@ -94,62 +83,92 @@ export function WaitlistForm({
     return <SuccessCard />;
   }
 
-  const selectedTracks = form.getValues().tracks;
-
   return (
     <form
       onSubmit={form.onSubmit(onSubmit)}
       noValidate
-      className="rounded-app border border-stroke-ink/60 bg-surface p-6 shadow-[0_24px_60px_-30px_rgb(11_22_63/0.3)] sm:p-9"
+      className="rounded-[20px] p-6 shadow-[0_24px_60px_-30px_rgba(11,22,63,0.3)] sm:p-9 transition-colors"
+      style={{
+        background: 'var(--panel)',
+        border: '1px solid var(--stroke)',
+      }}
     >
       <div className="space-y-7">
         <div className="grid gap-5 sm:grid-cols-2">
           <TextInput
-            label="Your name"
+            label={<span style={{ color: 'var(--text)' }}>Your name</span>}
             placeholder="Full name"
             withAsterisk
             key={form.key('name')}
             {...form.getInputProps('name')}
+            styles={{
+              input: {
+                background: 'var(--surface)',
+                borderColor: 'var(--stroke)',
+                color: 'var(--text)',
+              },
+            }}
           />
           <TextInput
-            label="Email"
+            label={<span style={{ color: 'var(--text)' }}>Email</span>}
             placeholder="you@example.com"
             withAsterisk
             key={form.key('email')}
             {...form.getInputProps('email')}
+            styles={{
+              input: {
+                background: 'var(--surface)',
+                borderColor: 'var(--stroke)',
+                color: 'var(--text)',
+              },
+            }}
           />
         </div>
 
         <Field
-          label="Which tracks are you interested in?"
-          hint="Select all that apply — this is what tells us where demand is."
-          error={form.errors.tracks as string | undefined}
+          label="Which track are you interested in?"
+          hint="Select one — this is what tells us where demand is."
+          error={form.errors.track as string | undefined}
         >
           <div className="grid gap-2.5 sm:grid-cols-2">
             {TRACKS.map((track) => {
-              const active = selectedTracks.includes(track.slug);
+              const active = form.getValues().track === track.slug;
               return (
                 <button
                   type="button"
                   key={track.slug}
-                  aria-pressed={active}
-                  onClick={() => {
-                    const next = active
-                      ? selectedTracks.filter((s) => s !== track.slug)
-                      : [...selectedTracks, track.slug];
-                    form.setFieldValue('tracks', next);
-                  }}
-                  className={cn(
-                    'rounded-input border px-4 py-3 text-left transition-colors',
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => form.setFieldValue('track', track.slug)}
+                  className="rounded-input border px-4 py-3 text-left transition-colors"
+                  style={
                     active
-                      ? 'border-primary bg-brand-soft'
-                      : 'border-stroke-ink/60 hover:border-primary/60',
-                  )}
+                      ? {
+                          borderColor: 'var(--primary)',
+                          background: 'var(--brand-soft)',
+                        }
+                      : {
+                          borderColor: 'var(--stroke)',
+                          background: 'transparent',
+                        }
+                  }
+                  onMouseEnter={(e) => {
+                    if (!active) (e.currentTarget as HTMLElement).style.borderColor = 'var(--primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) (e.currentTarget as HTMLElement).style.borderColor = 'var(--stroke)';
+                  }}
                 >
-                  <span className="block font-sans text-sm font-semibold text-text">
+                  <span
+                    className="block font-sans text-sm font-semibold"
+                    style={{ color: 'var(--text)' }}
+                  >
                     {track.name}
                   </span>
-                  <span className="mt-0.5 block font-hand text-base leading-tight text-text-light">
+                  <span
+                    className="mt-0.5 block font-sans text-xs font-medium"
+                    style={{ color: 'var(--text-light)' }}
+                  >
                     {track.tagline}
                   </span>
                 </button>
@@ -169,7 +188,7 @@ export function WaitlistForm({
           <div
             role="radiogroup"
             aria-label="Your current level"
-            className="grid grid-cols-3 gap-2"
+            className="grid grid-cols-2 gap-2"
           >
             {LEVELS.map((l) => {
               const active = form.getValues().level === l.id;
@@ -180,12 +199,26 @@ export function WaitlistForm({
                   role="radio"
                   aria-checked={active}
                   onClick={() => form.setFieldValue('level', l.id)}
-                  className={cn(
-                    'rounded-input border px-3 py-2.5 font-sans text-sm font-semibold transition-colors',
+                  className="rounded-input border px-3 py-2.5 font-sans text-sm font-semibold transition-colors"
+                  style={
                     active
-                      ? 'border-primary bg-primary text-white'
-                      : 'border-stroke-ink/60 text-text-light hover:border-primary/60',
-                  )}
+                      ? {
+                          borderColor: 'var(--primary)',
+                          background: 'var(--primary)',
+                          color: '#fff',
+                        }
+                      : {
+                          borderColor: 'var(--stroke)',
+                          background: 'transparent',
+                          color: 'var(--text-light)',
+                        }
+                  }
+                  onMouseEnter={(e) => {
+                    if (!active) (e.currentTarget as HTMLElement).style.borderColor = 'var(--primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) (e.currentTarget as HTMLElement).style.borderColor = 'var(--stroke)';
+                  }}
                 >
                   {l.label}
                 </button>
@@ -194,56 +227,56 @@ export function WaitlistForm({
           </div>
         </Field>
 
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-5">
           <Select
-            label="Preferred learning mode"
-            placeholder="Choose one"
-            data={LEARNING_MODES.map((m) => ({
-              value: m.value,
-              label: m.label,
-            }))}
-            {...form.getInputProps('mode')}
-            value={form.getValues().mode || null}
-            onChange={(v) => form.setFieldValue('mode', v ?? '')}
-          />
-          <Select
-            label="Where are you based?"
+            label={<span style={{ color: 'var(--text)' }}>Where are you based?</span>}
             placeholder="Choose a region"
             data={TIMEZONES}
             {...form.getInputProps('timezone')}
             value={form.getValues().timezone || null}
             onChange={(v) => form.setFieldValue('timezone', v ?? '')}
+            styles={{
+              input: {
+                background: 'var(--surface)',
+                borderColor: 'var(--stroke)',
+                color: 'var(--text)',
+              },
+            }}
           />
         </div>
 
         <Textarea
-          label="What are you hoping to change?"
-          description="Optional — a new role, a product idea, more confidence."
+          label={<span style={{ color: 'var(--text)' }}>What are you hoping to change?</span>}
+          description={<span style={{ color: 'var(--text-light)' }}>Optional — a new role, a product idea, more confidence.</span>}
           autosize
           minRows={3}
           key={form.key('goal')}
           {...form.getInputProps('goal')}
+          styles={{
+            input: {
+              background: 'var(--surface)',
+              borderColor: 'var(--stroke)',
+              color: 'var(--text)',
+            },
+          }}
         />
 
-        <div className="rounded-input border border-dashed border-stroke-ink/70 bg-subtle-surface p-4">
-          <Switch
-            label="I'd also be interested in teaching or mentoring"
-            description="We build the trainer team around the same demand signal."
-            key={form.key('wantsToTeach')}
-            {...form.getInputProps('wantsToTeach', { type: 'checkbox' })}
-          />
-        </div>
-
         <Select
-          label="How did you hear about Dida?"
+          label={<span style={{ color: 'var(--text)' }}>How did you hear about Dida?</span>}
           placeholder="Optional"
           data={HEAR_ABOUT.map((h) => ({ value: h.value, label: h.label }))}
           {...form.getInputProps('hearAbout')}
           value={form.getValues().hearAbout || null}
           onChange={(v) => form.setFieldValue('hearAbout', v ?? '')}
+          styles={{
+            input: {
+              background: 'var(--surface)',
+              borderColor: 'var(--stroke)',
+              color: 'var(--text)',
+            },
+          }}
         />
 
-        {/* Honeypot */}
         <input
           type="text"
           tabIndex={-1}
@@ -255,26 +288,51 @@ export function WaitlistForm({
         />
 
         <Checkbox
-          label="Send me occasional Dida updates about cohorts and launch news."
+          label={<span style={{ color: 'var(--text)' }}>Send me occasional Dida updates about cohorts and launch news.</span>}
           key={form.key('consent')}
           {...form.getInputProps('consent', { type: 'checkbox' })}
         />
 
         {serverError && (
-          <p className="rounded-input bg-error-soft px-4 py-3 text-sm font-medium text-error">
+          <p className="rounded-input bg-error/15 px-4 py-3 text-sm font-medium text-error">
             {serverError}
           </p>
         )}
 
+        <div
+          className="rounded-input px-4 py-3 text-[0.82rem] leading-relaxed"
+          style={{
+            background: 'var(--brand-soft)',
+            color: 'var(--text-light)',
+          }}
+        >
+          Free to add your name. Cohort places carry a one-time training fee —
+          reserve now and the{' '}
+          <span className="font-semibold" style={{ color: 'var(--accent)' }}>
+            registration fee is waived
+          </span>
+          .{' '}
+          <Link
+            href="/#scholarship"
+            className="font-semibold underline underline-offset-2"
+            style={{ color: 'var(--accent)' }}
+          >
+            See the full breakdown
+          </Link>
+        </div>
+
         <button
           type="submit"
           disabled={form.submitting}
-          className="h-14 w-full rounded-btn bg-primary py-4 font-sans font-semibold text-white shadow-[0_16px_36px_-16px_rgb(23_63_234/0.55)] transition-colors hover:bg-primary-dark disabled:opacity-60"
+          className="btn-glow relative overflow-hidden h-14 w-full rounded-btn bg-primary py-4 font-sans font-semibold text-white shadow-[0_16px_36px_-16px_rgb(23_63_234/0.55)] transition-colors hover:bg-primary-dark disabled:opacity-60"
         >
           {form.submitting ? 'Adding your name…' : 'Add my name to the list →'}
         </button>
 
-        <p className="text-center text-xs leading-relaxed text-text-light">
+        <p
+          className="text-center text-xs leading-relaxed"
+          style={{ color: 'var(--text-light)' }}
+        >
           No spam, ever. You can ask us to remove your details at any time.
         </p>
       </div>
@@ -295,8 +353,14 @@ function Field({
 }) {
   return (
     <div>
-      <p className="font-sans text-sm font-semibold text-text">{label}</p>
-      {hint && <p className="mt-0.5 font-sans text-xs text-text-light">{hint}</p>}
+      <p className="font-sans text-sm font-semibold" style={{ color: 'var(--text)' }}>
+        {label}
+      </p>
+      {hint && (
+        <p className="mt-0.5 font-sans text-xs" style={{ color: 'var(--text-light)' }}>
+          {hint}
+        </p>
+      )}
       <div className="mt-2.5">{children}</div>
       {error && (
         <p className="mt-1.5 font-sans text-xs font-medium text-error">{error}</p>
@@ -307,18 +371,52 @@ function Field({
 
 function SuccessCard() {
   return (
-    <div className="rounded-app border border-stroke-ink/60 bg-surface p-8 text-center shadow-[0_24px_60px_-30px_rgb(11_22_63/0.3)] sm:p-12">
-      <p className="font-hand text-2xl text-primary">that&rsquo;s it</p>
-      <div className="mx-auto mt-4 grid h-14 w-14 place-items-center rounded-full bg-success-soft text-2xl text-success">
+    <div
+      className="rounded-[20px] p-8 text-center shadow-[0_24px_60px_-30px_rgba(11,22,63,0.3)] sm:p-12"
+      style={{
+        background: 'var(--panel)',
+        border: '1px solid var(--stroke)',
+      }}
+    >
+      <p className="font-hand text-2xl" style={{ color: 'var(--primary)' }}>
+        that&rsquo;s it
+      </p>
+      <div className="mx-auto mt-4 grid h-14 w-14 place-items-center rounded-full bg-success/15 text-2xl text-success">
         ✓
       </div>
-      <h2 className="mt-6 font-display text-[1.7rem] font-semibold tracking-[-0.01em] text-text">
+      <h2
+        className="mt-6 h3-b"
+        style={{ color: 'var(--text)' }}
+      >
         Your name is on the list.
       </h2>
-      <p className="mx-auto mt-3 max-w-sm font-sans text-sm leading-relaxed text-text-light">
+      <p
+        className="mx-auto mt-3 max-w-sm font-sans text-sm leading-relaxed"
+        style={{ color: 'var(--text-light)' }}
+      >
         Thanks for helping shape the first cohort. We&rsquo;ll be in touch as the
         track you picked takes shape — keep an eye on your inbox.
       </p>
+
+      <div
+        className="mx-auto mt-6 max-w-sm rounded-input px-4 py-3 text-left text-[0.82rem] leading-relaxed"
+        style={{ background: 'var(--brand-soft)', color: 'var(--text-light)' }}
+      >
+        <span className="font-semibold" style={{ color: 'var(--accent)' }}>
+          Early-reserver scholarship secured.
+        </span>{' '}
+        Your registration fee is waived. If you accept a cohort seat, the only
+        cost is a one-time training fee —{' '}
+        <Link
+          href="/#scholarship"
+          className="font-semibold underline underline-offset-2"
+          style={{ color: 'var(--accent)' }}
+        >
+          see the numbers
+        </Link>
+        .
+      </div>
+
       <div className="mt-7 flex flex-col items-center gap-3">
         <a
           href="https://x.com/intent/tweet?text=I%20just%20added%20my%20name%20to%20the%20Dida%20list%20%E2%80%94%20a%20practical%2C%20mentor-led%20tech%20bootcamp."
@@ -330,7 +428,14 @@ function SuccessCard() {
         </a>
         <Link
           href="/"
-          className="font-sans text-sm font-semibold text-text-light transition-colors hover:text-primary"
+          className="font-sans text-sm font-semibold transition-colors"
+          style={{ color: 'var(--text-light)' }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.color = 'var(--primary)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.color = 'var(--text-light)';
+          }}
         >
           Back to home
         </Link>
