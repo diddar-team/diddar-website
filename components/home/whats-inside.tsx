@@ -45,7 +45,7 @@ export function WhatsInside() {
       <CardGrid>
         {ITEMS.map(({ icon, title, desc }, i) => (
           <Reveal key={title} delay={(i % 3) * 60}>
-            <div className="group flex h-full gap-4 rounded-2xl border border-stroke bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.16)]">
+            <div className="group flex h-full gap-3 rounded-2xl border border-stroke bg-surface p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.16)]">
               <div className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-brand-soft bg-brand-soft text-xl">
                 {icon}
               </div>

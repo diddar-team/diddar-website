@@ -17,7 +17,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative min-h-[90vh] overflow-hidden"
+      className="relative overflow-hidden"
       style={{ background: 'var(--panel)' }}
     >
       <div
@@ -57,9 +57,9 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 flex flex-col items-start justify-center pb-0 pt-20 lg:pt-28">
+      <Container className="relative z-10 flex flex-col items-start justify-center pb-0 pt-14 lg:pt-20">
         <div
-          className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
+          className="mb-6 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 backdrop-blur-sm"
           style={{
             border: '1px solid var(--stroke)',
             background: 'var(--brand-soft)',
@@ -87,7 +87,7 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-6 max-w-lg font-sans text-[1.08rem] leading-relaxed"
+          className="mt-5 max-w-lg font-sans text-[1rem] leading-relaxed"
           style={{ color: 'var(--text-light)' }}
         >
           Dida is a practical, mentor-led tech school. Tell us what you want to
@@ -95,7 +95,7 @@ export function Hero() {
           which mentors we bring in.
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-7 flex flex-wrap items-center gap-4">
           <ButtonLink href="/waitlist" size="lg" className="btn-glow">
             Add my name to the list
             <span aria-hidden>→</span>
@@ -113,7 +113,7 @@ export function Hero() {
         </div>
 
         <div
-          className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 border-t pt-8"
+          className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 border-t pt-6"
           style={{ borderColor: 'var(--stroke)' }}
         >
           {[
@@ -124,7 +124,7 @@ export function Hero() {
           ].map(({ n, label }) => (
             <div key={label} className="flex flex-col gap-0.5">
               <span
-                className="font-display text-2xl font-semibold"
+                className="font-display text-xl font-semibold"
                 style={{ color: 'var(--text)' }}
               >
                 {n}
@@ -141,7 +141,7 @@ export function Hero() {
       </Container>
 
       <div
-        className="relative mt-16 overflow-hidden border-t py-6"
+        className="relative mt-10 overflow-hidden border-t py-5"
         style={{
           borderColor: 'var(--stroke)',
           background: 'transparent',

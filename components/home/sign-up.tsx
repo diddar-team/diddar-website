@@ -4,13 +4,13 @@ import { Reveal } from '@/components/reveal';
 
 export function SignUp() {
   return (
-    <Container className="pb-28 pt-4">
+    <Container className="pb-12 pt-0">
       <Reveal>
 
         <div className="gradient-border relative overflow-hidden rounded-[20px]">
 
           <div
-            className="relative overflow-hidden rounded-[18px] p-10 sm:p-16"
+            className="relative overflow-hidden rounded-[18px] p-7 sm:p-11"
             style={{ background: 'var(--panel)' }}
           >
 
@@ -34,7 +34,7 @@ export function SignUp() {
             <div className="relative max-w-xl">
 
               <div
-                className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2"
+                className="mb-5 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5"
                 style={{
                   border: '1px solid var(--stroke)',
                   background: 'var(--brand-soft)',
@@ -57,14 +57,14 @@ export function SignUp() {
               </h2>
 
               <p
-                className="mt-4 font-sans text-[1rem] leading-relaxed"
+                className="mt-3 font-sans text-[0.95rem] leading-relaxed"
                 style={{ color: 'var(--text-light)' }}
               >
                 It takes two minutes and no account. You will hear from us when
                 the track you picked is ready to open.
               </p>
 
-              <div className="mt-8">
+              <div className="mt-6">
                 <ButtonLink href="/waitlist" size="lg" className="btn-glow">
                   Add my name to the list
                   <span aria-hidden>→</span>

@@ -28,8 +28,8 @@
   --glass-border: rgb(11 22 63 / 0.08);
 
   --font-app-font: var(--font-fraunces), 'Fraunces', ui-serif, Georgia, serif;
-  --font-secondary-font: var(--font-dm-sans), 'DM Sans', ui-sans-serif,
-    system-ui, sans-serif;
+  --font-secondary-font:
+    var(--font-dm-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
   --font-hand: var(--font-caveat), 'Caveat', cursive;
 
   --heading-1-b: 600 clamp(2.75rem, 3.4vw + 1.6rem, 5rem) / 1.03
@@ -120,22 +120,62 @@
 }
 
 @layer components {
-  .h1-b { font: var(--heading-1-b); letter-spacing: -0.03em; }
-  .h1-m { font: var(--heading-1-m); letter-spacing: -0.03em; }
-  .h2-b { font: var(--heading-2-b); letter-spacing: -0.02em; }
-  .h2-m { font: var(--heading-2-m); letter-spacing: -0.02em; }
-  .h3-b { font: var(--heading-3-b); letter-spacing: -0.015em; }
-  .h3-m { font: var(--heading-3-m); letter-spacing: -0.015em; }
-  .h4-b { font: var(--heading-4-b); letter-spacing: -0.01em; }
-  .h4-m { font: var(--heading-4-m); letter-spacing: -0.01em; }
-  .h5-b { font: var(--heading-5-b); }
-  .h6-b { font: var(--heading-6-b); }
-  .b1-b { font: var(--body-1-b); }
-  .b1-m { font: var(--body-1-m); }
-  .b1-r { font: var(--body-1-r); }
-  .b2-b { font: var(--body-2-b); }
-  .b2-m { font: var(--body-2-m); }
-  .b2-r { font: var(--body-2-r); }
+  .h1-b {
+    font: var(--heading-1-b);
+    letter-spacing: -0.03em;
+  }
+  .h1-m {
+    font: var(--heading-1-m);
+    letter-spacing: -0.03em;
+  }
+  .h2-b {
+    font: var(--heading-2-b);
+    letter-spacing: -0.02em;
+  }
+  .h2-m {
+    font: var(--heading-2-m);
+    letter-spacing: -0.02em;
+  }
+  .h3-b {
+    font: var(--heading-3-b);
+    letter-spacing: -0.015em;
+  }
+  .h3-m {
+    font: var(--heading-3-m);
+    letter-spacing: -0.015em;
+  }
+  .h4-b {
+    font: var(--heading-4-b);
+    letter-spacing: -0.01em;
+  }
+  .h4-m {
+    font: var(--heading-4-m);
+    letter-spacing: -0.01em;
+  }
+  .h5-b {
+    font: var(--heading-5-b);
+  }
+  .h6-b {
+    font: var(--heading-6-b);
+  }
+  .b1-b {
+    font: var(--body-1-b);
+  }
+  .b1-m {
+    font: var(--body-1-m);
+  }
+  .b1-r {
+    font: var(--body-1-r);
+  }
+  .b2-b {
+    font: var(--body-2-b);
+  }
+  .b2-m {
+    font: var(--body-2-m);
+  }
+  .b2-r {
+    font: var(--body-2-r);
+  }
   .label-b {
     font: var(--label-b);
     text-transform: uppercase;

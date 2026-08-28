@@ -85,7 +85,7 @@ export function PricingBreakdown({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'rounded-2xl border border-stroke bg-surface p-6 shadow-[0_20px_50px_-28px_rgba(11,22,63,0.35)] sm:p-8',
+        'rounded-2xl border border-stroke bg-surface p-5 shadow-[0_16px_40px_-24px_rgba(11,22,63,0.3)] sm:p-6',
         className,
       )}
     >

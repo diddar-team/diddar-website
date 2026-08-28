@@ -34,7 +34,7 @@ export function Voices() {
       <CardGrid cols="sm:grid-cols-3">
         {QUOTES.map((q, i) => (
           <Reveal key={i} delay={i * 80}>
-            <figure className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-stroke bg-surface p-7">
+            <figure className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-stroke bg-surface p-5">
               <div
                 className="absolute inset-x-0 top-0 h-[2px]"
                 style={{

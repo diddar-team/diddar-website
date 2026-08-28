@@ -23,7 +23,7 @@ export function TracksBoard() {
         ))}
       </CardGrid>
 
-      <p className="mt-10 font-sans text-[0.88rem] text-text-light">
+      <p className="mt-8 font-sans text-[0.85rem] text-text-light">
         Don&rsquo;t see your stack?{' '}
         <Link
           href="/waitlist"

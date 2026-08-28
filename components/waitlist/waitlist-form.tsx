@@ -87,7 +87,7 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
     <form
       onSubmit={form.onSubmit(onSubmit)}
       noValidate
-      className="rounded-[20px] p-6 shadow-[0_24px_60px_-30px_rgba(11,22,63,0.3)] sm:p-9 transition-colors"
+      className="rounded-[18px] p-5 shadow-[0_20px_50px_-28px_rgba(11,22,63,0.28)] sm:p-7 transition-colors"
       style={{
         background: 'var(--panel)',
         border: '1px solid var(--stroke)',

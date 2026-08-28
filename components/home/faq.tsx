@@ -31,7 +31,7 @@ const FAQS = [
 export function Faq() {
   return (
     <Section id="faq">
-      <div className="grid gap-12 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+      <div className="grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
         <Reveal>
           <SectionHeader
             eyebrow="Questions, answered"

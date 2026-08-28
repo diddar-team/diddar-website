@@ -26,7 +26,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        'scroll-mt-24 py-24 sm:py-32',
+        'scroll-mt-20 py-9 sm:py-12',
         panel && 'bg-panel',
         className,
       )}
@@ -55,7 +55,7 @@ export function SectionHeader({
     <div className={className}>
       <p
         className={cn(
-          'mb-4 inline-flex items-center gap-2 font-sans text-[0.72rem] font-bold uppercase tracking-[0.18em]',
+          'mb-3 inline-flex items-center gap-2 font-sans text-[0.68rem] font-bold uppercase tracking-[0.16em]',
           TONE_TEXT[tone],
         )}
       >
@@ -66,9 +66,9 @@ export function SectionHeader({
       </p>
 
       {aside && description ? (
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="h3-b max-w-xl text-text">{title}</h2>
-          <div className="max-w-sm font-sans text-[0.96rem] leading-relaxed text-text-light">
+          <div className="max-w-sm font-sans text-[0.9rem] leading-relaxed text-text-light">
             {description}
           </div>
         </div>
@@ -76,7 +76,7 @@ export function SectionHeader({
         <>
           <h2 className="h3-b text-text">{title}</h2>
           {description && (
-            <div className="mt-4 max-w-lg space-y-3 font-sans text-[1rem] leading-relaxed text-text-light">
+            <div className="mt-3 max-w-lg space-y-2 font-sans text-[0.95rem] leading-relaxed text-text-light">
               {description}
             </div>
           )}
@@ -94,7 +94,7 @@ export function SectionBlock({
   title,
   description,
   aside,
-  headerClassName = 'mb-14',
+  headerClassName = 'mb-8',
   children,
 }: {
   id?: string;
@@ -134,7 +134,7 @@ export function CardGrid({
 }) {
   return (
     <div
-      className={cn('grid auto-rows-fr gap-4 [&>*]:h-full', cols, className)}
+      className={cn('grid auto-rows-fr gap-3.5 [&>*]:h-full', cols, className)}
     >
       {children}
     </div>

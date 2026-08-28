@@ -5,7 +5,7 @@ import { PricingBreakdown } from '@/components/pricing/pricing-breakdown';
 export function Scholarship() {
   return (
     <Section id="scholarship">
-      <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         <Reveal>
           <SectionHeader
             eyebrow="The honest part"

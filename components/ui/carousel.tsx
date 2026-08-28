@@ -70,7 +70,7 @@ export function Carousel({
         {children}
       </div>
 
-      <div className="mt-6 flex gap-2">
+      <div className="mt-5 flex gap-2">
         <button
           type="button"
           onClick={() => nudge(-1)}

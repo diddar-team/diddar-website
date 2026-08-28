@@ -24,7 +24,7 @@ export function Premise() {
           </span>
         </blockquote>
 
-        <div className="mt-10 flex items-center gap-4">
+        <div className="mt-8 flex items-center gap-4">
           <div className="h-px flex-1 bg-gradient-to-r from-primary/40 via-accent/30 to-transparent" />
           <span className="font-sans text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-muted">
             Dida

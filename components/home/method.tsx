@@ -31,23 +31,23 @@ export function Method() {
       id="how"
       eyebrow="How it works"
       title="No guesswork. Three steps."
-      headerClassName="mb-16"
+      headerClassName="mb-8"
     >
       <ol className="relative grid auto-rows-fr gap-px [&>*]:h-full sm:grid-cols-3">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-0 right-0 top-10 hidden h-px bg-gradient-to-r from-transparent via-stroke to-transparent sm:block"
+          className="pointer-events-none absolute left-0 right-0 top-9 hidden h-px bg-gradient-to-r from-transparent via-stroke to-transparent sm:block"
         />
 
         {STEPS.map((step, i) => (
           <Reveal as="li" key={step.n} delay={i * 100}>
-            <div className="group relative flex h-full flex-col gap-5 rounded-2xl border border-stroke bg-surface p-6 shadow-[0_2px_20px_-8px_rgba(11,22,63,0.08)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.18)]">
+            <div className="group relative flex h-full flex-col gap-4 rounded-2xl border border-stroke bg-surface p-5 shadow-[0_2px_20px_-8px_rgba(11,22,63,0.08)] transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.18)]">
               <div className="flex items-center gap-4">
-                <span className="relative font-display text-[3rem] font-semibold leading-none text-stroke">
+                <span className="relative font-display text-[2.4rem] font-semibold leading-none text-stroke">
                   {step.n}
                   <span
                     aria-hidden
-                    className="absolute inset-0 font-display text-[3rem] font-semibold leading-none text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className="absolute inset-0 font-display text-[2.4rem] font-semibold leading-none text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   >
                     {step.n}
                   </span>

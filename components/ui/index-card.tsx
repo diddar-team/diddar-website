@@ -24,7 +24,7 @@ export function IndexCard({
     <Link
       href={`/waitlist?track=${track.slug}`}
       className={cn(
-        'group/card relative flex h-full flex-col overflow-hidden rounded-2xl p-6 backdrop-blur-sm',
+        'group/card relative flex h-full flex-col overflow-hidden rounded-2xl p-5 backdrop-blur-sm',
         'transition-all duration-300',
         className,
       )}
@@ -51,9 +51,9 @@ export function IndexCard({
         }}
       />
 
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <span
-          className="grid h-10 w-10 place-items-center rounded-xl text-[1.2rem] transition-colors"
+          className="grid h-9 w-9 place-items-center rounded-lg text-[1.05rem] transition-colors"
           style={{
             border: '1px solid var(--stroke)',
             background: 'var(--brand-soft)',
@@ -95,7 +95,7 @@ export function IndexCard({
         {track.blurb}
       </p>
 
-      <div className="mt-5 flex flex-wrap gap-1.5">
+      <div className="mt-4 flex flex-wrap gap-1.5">
         {track.stack.slice(0, 4).map((s) => (
           <span
             key={s}
@@ -150,7 +150,7 @@ export function IndexCard({
       </div>
 
       <div
-        className="mt-6 flex items-center justify-between border-t pt-4"
+        className="mt-5 flex items-center justify-between border-t pt-3.5"
         style={{ borderColor: 'var(--stroke)' }}
       >
         <span
