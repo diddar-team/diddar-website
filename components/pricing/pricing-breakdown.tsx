@@ -8,6 +8,7 @@ import {
   type ComputedPricing,
 } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
+import { CONTACT_EMAIL } from '@/lib/site';
 
 function Row({
   label,
@@ -94,7 +95,7 @@ export function PricingBreakdown({ className }: { className?: string }) {
       {failed && (
         <p className="font-sans text-sm text-text-light">
           Pricing is loading slowly — refresh to see the full breakdown, or ask
-          us anything at hello@dida.example.
+          us anything at {CONTACT_EMAIL}.
         </p>
       )}
 

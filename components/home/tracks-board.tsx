@@ -21,18 +21,24 @@ export function TracksBoard() {
             <IndexCard track={track} />
           </Reveal>
         ))}
-      </CardGrid>
 
-      <p className="mt-8 font-sans text-[0.85rem] text-text-light">
-        Don&rsquo;t see your stack?{' '}
-        <Link
-          href="/waitlist"
-          className="font-semibold text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
-        >
-          Tell us on the form
-        </Link>{' '}
-        — that&rsquo;s a vote too.
-      </p>
+        <Reveal delay={140}>
+          <Link
+            href="/waitlist"
+            className="flex h-full flex-col justify-center gap-2 rounded-2xl border-2 border-dashed border-stroke p-6 text-center transition-colors hover:border-primary/60"
+          >
+            <span className="font-display text-lg font-semibold text-text">
+              Something else?
+            </span>
+            <span className="font-sans text-[0.85rem] leading-relaxed text-text-light">
+              Tell us on the form — every request is a vote for a future track.
+            </span>
+            <span className="mt-1 font-sans text-[0.82rem] font-semibold text-primary">
+              Request a track →
+            </span>
+          </Link>
+        </Reveal>
+      </CardGrid>
     </SectionBlock>
   );
 }

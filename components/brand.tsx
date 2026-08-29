@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { APP_NAME } from '@/lib/site';
 
 export function BrandMark({ className }: { className?: string }) {
   return (
@@ -10,8 +11,20 @@ export function BrandMark({ className }: { className?: string }) {
       aria-label="Dida"
     >
       <rect width="32" height="32" rx="10" fill="var(--primary)" />
-      <circle cx="13" cy="20" r="6" fill="none" stroke="#fff" strokeWidth="3.2" />
-      <path d="M21 6V26" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" />
+      <circle
+        cx="13"
+        cy="20"
+        r="6"
+        fill="none"
+        stroke="#fff"
+        strokeWidth="3.2"
+      />
+      <path
+        d="M21 6V26"
+        stroke="#fff"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
       <circle cx="24.5" cy="8" r="3" fill="var(--primary)" />
     </svg>
   );
@@ -34,7 +47,7 @@ export function BrandLockup({
       )}
     >
       <span className="relative">
-        Dida
+        {APP_NAME}
         <svg
           viewBox="0 0 120 12"
           preserveAspectRatio="none"

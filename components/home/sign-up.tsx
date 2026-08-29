@@ -4,13 +4,13 @@ import { Reveal } from '@/components/reveal';
 
 export function SignUp() {
   return (
-    <Container className="pb-12 pt-0">
+    <Container className="pb-16 pt-4">
       <Reveal>
 
         <div className="gradient-border relative overflow-hidden rounded-[20px]">
 
           <div
-            className="relative overflow-hidden rounded-[18px] p-7 sm:p-11"
+            className="relative overflow-hidden rounded-[18px] p-8 sm:p-14"
             style={{ background: 'var(--panel)' }}
           >
 
@@ -64,7 +64,7 @@ export function SignUp() {
                 the track you picked is ready to open.
               </p>
 
-              <div className="mt-6">
+              <div className="mt-8">
                 <ButtonLink href="/waitlist" size="lg" className="btn-glow">
                   Add my name to the list
                   <span aria-hidden>→</span>

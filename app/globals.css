@@ -55,35 +55,69 @@
 }
 
 @keyframes orb-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(60px, -40px) scale(1.08); }
-  66% { transform: translate(-30px, 30px) scale(0.96); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.96);
+  }
 }
 
 @keyframes orb-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(-50px, 30px) scale(1.06); }
-  70% { transform: translate(40px, -20px) scale(0.94); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(-50px, 30px) scale(1.06);
+  }
+  70% {
+    transform: translate(40px, -20px) scale(0.94);
+  }
 }
 
 @keyframes orb-drift-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 50px) scale(1.1); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, 50px) scale(1.1);
+  }
 }
 
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes gradient-border-spin {
-  0% { --gradient-angle: 0deg; }
-  100% { --gradient-angle: 360deg; }
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px -4px color-mix(in srgb, var(--primary) 40%, transparent); }
-  50% { box-shadow: 0 0 36px -4px color-mix(in srgb, var(--primary) 70%, transparent); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px -4px
+      color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 36px -4px
+      color-mix(in srgb, var(--primary) 70%, transparent);
+  }
 }
 
 @layer utilities {
@@ -138,9 +172,15 @@
     animation-play-state: paused;
   }
 
-  .orb-1 { animation: orb-drift-1 18s ease-in-out infinite; }
-  .orb-2 { animation: orb-drift-2 22s ease-in-out infinite; }
-  .orb-3 { animation: orb-drift-3 16s ease-in-out infinite; }
+  .orb-1 {
+    animation: orb-drift-1 18s ease-in-out infinite;
+  }
+  .orb-2 {
+    animation: orb-drift-2 22s ease-in-out infinite;
+  }
+  .orb-3 {
+    animation: orb-drift-3 16s ease-in-out infinite;
+  }
 
   .btn-glow {
     animation: pulse-glow 3s ease-in-out infinite;

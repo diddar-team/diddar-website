@@ -1,5 +1,6 @@
 import { SectionBlock, CardGrid } from '@/components/ui/section';
 import { Reveal } from '@/components/reveal';
+import { APP_NAME } from '@/lib/site';
 
 const ITEMS = [
   {
@@ -38,14 +39,14 @@ export function WhatsInside() {
   return (
     <SectionBlock
       eyebrow="What you get"
-      title="What's in a Dida cohort."
+      title={`What's in a ${APP_NAME} cohort.`}
       description="Every track runs the same way. The stack changes; the support doesn't."
       aside
     >
       <CardGrid>
         {ITEMS.map(({ icon, title, desc }, i) => (
           <Reveal key={title} delay={(i % 3) * 60}>
-            <div className="group flex h-full gap-3 rounded-2xl border border-stroke bg-surface p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.16)]">
+            <div className="group flex h-full gap-3 rounded-2xl border border-stroke bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_32px_-12px_rgba(23,63,234,0.16)]">
               <div className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-brand-soft bg-brand-soft text-xl">
                 {icon}
               </div>

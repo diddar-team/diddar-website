@@ -4,6 +4,7 @@ import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
 import './globals.css';
 import { COLOR_SCHEME_KEY, Providers } from '@/components/providers';
+import { APP_DESCRIPTION, APP_NAME, APP_TAGLINE, SITE_URL } from '@/lib/site';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -25,37 +26,35 @@ const caveat = Caveat({
   weight: ['500', '600', '700'],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dida.example';
+const TITLE = `${APP_NAME} — ${APP_TAGLINE}`;
+const SOCIAL_DESCRIPTION = `A practical, mentor-led tech bootcamp shaped around real demand. Add your name to the list.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Dida — Same you. Bigger future.',
-    template: '%s · Dida',
+    default: TITLE,
+    template: `%s · ${APP_NAME}`,
   },
-  description:
-    'Dida is a practical, mentor-led tech bootcamp. Add your name to the list, tell us your stack and level, and help shape the first cohort.',
+  description: APP_DESCRIPTION,
   keywords: [
     'tech bootcamp',
     'learn to code',
     'frontend',
     'backend',
     'software training',
-    'Dida',
+    APP_NAME,
   ],
   openGraph: {
-    title: 'Dida — Same you. Bigger future.',
-    description:
-      'A practical, mentor-led tech bootcamp shaped around real demand. Add your name to the list.',
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
     url: SITE_URL,
-    siteName: 'Dida',
+    siteName: APP_NAME,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dida — Same you. Bigger future.',
-    description:
-      'A practical, mentor-led tech bootcamp shaped around real demand. Add your name to the list.',
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
   },
 };
 

@@ -2,9 +2,11 @@ import { Container } from '@/components/ui/container';
 import { ButtonLink } from '@/components/ui/button';
 import { MarkUnderline } from '@/components/marks';
 import { COHORT_LENGTH, TRACKS } from '@/lib/tracks';
+import { APP_NAME } from '@/lib/site';
 
 const TRACK_ICONS: Record<string, string> = {
   frontend: '⬡',
+  'product-design': '◭',
   backend: '◈',
   fullstack: '⬟',
   'ai-for-developers': '⬢',
@@ -25,39 +27,30 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         <div
-          className="orb-1 absolute -left-32 -top-24 h-[560px] w-[560px] rounded-full opacity-40"
+          className="orb-1 absolute -left-32 -top-24 h-[520px] w-[520px] rounded-full opacity-40"
           style={{
             background: `radial-gradient(circle, var(--primary) 0%, transparent 70%)`,
             filter: 'blur(64px)',
           }}
         />
         <div
-          className="orb-2 absolute -right-20 top-32 h-[420px] w-[420px] rounded-full opacity-60"
+          className="orb-2 absolute -right-24 top-24 h-[380px] w-[380px] rounded-full opacity-50"
           style={{
             background: `radial-gradient(circle, var(--accent) 0%, transparent 70%)`,
             filter: 'blur(80px)',
           }}
         />
         <div
-          className="orb-3 absolute bottom-8 left-1/2 h-[320px] w-[480px] -translate-x-1/2 rounded-full opacity-50"
-          style={{
-            background: `radial-gradient(ellipse, var(--primary) 0%, transparent 70%)`,
-            filter: 'blur(72px)',
-          }}
-        />
-
-        <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `linear-gradient(var(--text) 1px, transparent 1px),
               linear-gradient(90deg, var(--text) 1px, transparent 1px)`,
             backgroundSize: '64px 64px',
-            backgroundAttachment: 'scroll',
           }}
         />
       </div>
 
-      <Container className="relative z-10 flex flex-col items-start justify-center pb-0 pt-14 lg:pt-20">
+      <Container className="relative z-10 flex flex-col items-start pb-2 pt-16 lg:pt-24">
         <div
           className="mb-6 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 backdrop-blur-sm"
           style={{
@@ -65,7 +58,7 @@ export function Hero() {
             background: 'var(--brand-soft)',
           }}
         >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4ade80]" />
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#22a06b]" />
           <span
             className="font-sans text-[0.78rem] font-medium tracking-wide"
             style={{ color: 'var(--primary)' }}
@@ -74,7 +67,7 @@ export function Hero() {
           </span>
         </div>
 
-        <h1 className="h2-b max-w-3xl" style={{ color: 'var(--text)' }}>
+        <h1 className="h1-b max-w-3xl" style={{ color: 'var(--text)' }}>
           Learn the skill.
           <br />
           Then{' '}
@@ -87,15 +80,15 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-5 max-w-lg font-sans text-[1rem] leading-relaxed"
+          className="mt-6 max-w-xl font-sans text-[1.05rem] leading-relaxed"
           style={{ color: 'var(--text-light)' }}
         >
-          Dida is a practical, mentor-led tech school. Tell us what you want to
-          learn and your level — the list decides which cohorts open first, and
-          which mentors we bring in.
+          {APP_NAME} is a practical, mentor-led tech school. Tell us what you
+          want to learn and your level — the list decides which cohorts open
+          first, and which mentors we bring in.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-4">
           <ButtonLink href="/waitlist" size="lg" className="btn-glow">
             Add my name to the list
             <span aria-hidden>→</span>
@@ -113,18 +106,18 @@ export function Hero() {
         </div>
 
         <div
-          className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 border-t pt-6"
+          className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t pt-7"
           style={{ borderColor: 'var(--stroke)' }}
         >
           {[
-            { n: '6', label: 'Learning tracks' },
+            { n: '7', label: 'Learning tracks' },
             { n: '2', label: 'Skill levels' },
             { n: '100%', label: 'Online' },
-            { n: '2 min', label: 'To add your name' },
+            { n: COHORT_LENGTH, label: 'Every cohort' },
           ].map(({ n, label }) => (
             <div key={label} className="flex flex-col gap-0.5">
               <span
-                className="font-display text-xl font-semibold"
+                className="font-display text-[1.3rem] font-semibold"
                 style={{ color: 'var(--text)' }}
               >
                 {n}
@@ -141,11 +134,8 @@ export function Hero() {
       </Container>
 
       <div
-        className="relative mt-10 overflow-hidden border-t py-5"
-        style={{
-          borderColor: 'var(--stroke)',
-          background: 'transparent',
-        }}
+        className="relative mt-10 hidden overflow-hidden border-t py-5 lg:block"
+        style={{ borderColor: 'var(--stroke)' }}
       >
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24"
@@ -167,20 +157,14 @@ export function Hero() {
               className="flex shrink-0 items-center gap-3 px-8 py-1"
               style={{ borderRight: '1px solid var(--stroke)' }}
             >
-              <span style={{ color: 'var(--primary)', fontSize: '1.1rem' }}>
+              <span style={{ color: 'var(--primary)', fontSize: '1.05rem' }}>
                 {TRACK_ICONS[track.slug] ?? '◆'}
               </span>
               <span
-                className="whitespace-nowrap font-sans text-[0.88rem] font-medium"
+                className="whitespace-nowrap font-sans text-[0.86rem] font-medium"
                 style={{ color: 'var(--text)' }}
               >
                 {track.name}
-              </span>
-              <span
-                className="font-sans text-[0.72rem]"
-                style={{ color: 'var(--primary)', opacity: 0.6 }}
-              >
-                {COHORT_LENGTH}
               </span>
             </div>
           ))}

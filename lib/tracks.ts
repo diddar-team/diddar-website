@@ -44,6 +44,30 @@ export const TRACKS: Track[] = [
     ],
   },
   {
+    slug: 'product-design',
+    name: 'Product Design',
+    tagline: 'Design that ships',
+    blurb:
+      'Learn to design real product interfaces in Figma — from wireframes and layout to components, prototyping and clean developer handoff.',
+    levels: ['beginner', 'intermediate'],
+    stack: [
+      'Figma',
+      'Auto Layout',
+      'Components',
+      'Prototyping',
+      'Design systems',
+      'Handoff',
+    ],
+    outcomes: [
+      'Work fluently in Figma — frames, layout, styles',
+      'Build reusable components with Auto Layout and variants',
+      'Turn a brief into wireframes and a polished UI',
+      'Prototype and test flows before a line of code',
+      'Maintain a small design system',
+      'Hand off designs developers can build from',
+    ],
+  },
+  {
     slug: 'backend',
     name: 'Backend Engineering',
     tagline: 'Systems that hold up',
@@ -62,10 +86,10 @@ export const TRACKS: Track[] = [
   },
   {
     slug: 'fullstack',
-    name: 'The Builder Path',
-    tagline: 'Idea to working product',
+    name: 'Fullstack Development',
+    tagline: 'Both sides, end to end',
     blurb:
-      'A practical route through the whole stack for people who want to take an idea and ship it — a Next.js frontend, a FastAPI or NestJS backend, and the glue between them.',
+      'Learn the front and the back together — a Next.js frontend, a FastAPI or NestJS backend, a database, and how to connect and ship the whole thing.',
     levels: ['beginner', 'intermediate'],
     stack: [
       'JavaScript',

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BrandLockup } from '@/components/brand';
 import { Container } from '@/components/ui/container';
 import { NewsletterForm } from '@/components/newsletter-form';
+import { APP_NAME, CONTACT_EMAIL } from '@/lib/site';
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -16,7 +17,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
     title: 'Get involved',
     links: [
       { label: 'Add my name', href: '/waitlist' },
-      { label: 'Contact', href: 'mailto:hello@dida.example' },
+      { label: 'Contact', href: `mailto:${CONTACT_EMAIL}` },
     ],
   },
 ];
@@ -86,7 +87,9 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 font-sans text-[0.78rem] text-white/35 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Dida. Built for what comes next.</p>
+          <p>
+            © {new Date().getFullYear()} {APP_NAME}. Built for what comes next.
+          </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy"

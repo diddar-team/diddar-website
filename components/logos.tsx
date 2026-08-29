@@ -123,6 +123,15 @@ export const LOGOS: Record<string, ReactNode> = {
       <rect x="18" y="8" width="4" height="24" rx="1" fill="#fff" />
     </svg>
   ),
+  figma: (
+    <svg viewBox="0 0 40 40" className={box}>
+      <path d="M14.5 2H21v12h-6.5a6 6 0 0 1 0-12Z" fill="#F24E1E" />
+      <path d="M21 2h0a6 6 0 0 1 0 12h0V2Z" fill="#FF7262" />
+      <path d="M14.5 14H21v12h-6.5a6 6 0 0 1 0-12Z" fill="#A259FF" />
+      <circle cx="27" cy="20" r="6" fill="#1ABCFE" />
+      <circle cx="14.5" cy="32" r="6" fill="#0ACF83" />
+    </svg>
+  ),
   ai: (
     <svg viewBox="0 0 40 40" className={box}>
       <rect width="40" height="40" rx="10" fill="#F36B42" />

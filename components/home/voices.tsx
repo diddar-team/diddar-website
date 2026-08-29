@@ -1,5 +1,6 @@
 import { SectionBlock, CardGrid } from '@/components/ui/section';
 import { Reveal } from '@/components/reveal';
+import { APP_NAME } from '@/lib/site';
 
 const QUOTES = [
   {
@@ -17,7 +18,7 @@ const QUOTES = [
   {
     quote:
       'Switched from a non-tech job at 31. The pace was real, but I was never on my own.',
-    caption: 'a future Dida story',
+    caption: `a future ${APP_NAME} story`,
     accent: 'var(--success)',
   },
 ];
@@ -29,12 +30,12 @@ export function Voices() {
       eyebrow="Voices"
       tone="brand"
       title="Cohort one hasn't run yet."
-      description="So instead of borrowed testimonials, here is the kind of thing we are building Dida to make true. Your name on the list helps."
+      description={`So instead of borrowed testimonials, here is the kind of thing we are building ${APP_NAME} to make true. Your name on the list helps.`}
     >
       <CardGrid cols="sm:grid-cols-3">
         {QUOTES.map((q, i) => (
           <Reveal key={i} delay={i * 80}>
-            <figure className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-stroke bg-surface p-5">
+            <figure className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-stroke bg-surface p-6">
               <div
                 className="absolute inset-x-0 top-0 h-[2px]"
                 style={{

@@ -4,15 +4,16 @@ import Link from 'next/link';
 import { Accordion } from '@mantine/core';
 import { Section, SectionHeader } from '@/components/ui/section';
 import { Reveal } from '@/components/reveal';
+import { APP_NAME } from '@/lib/site';
 
 const FAQS = [
   {
-    q: 'What is Dida, exactly?',
+    q: `What is ${APP_NAME}, exactly?`,
     a: 'A practical, mentor-led tech bootcamp. We build each cohort around the tracks and levels people ask for on the list, so training follows real demand instead of guesswork.',
   },
   {
     q: 'Which tracks can I pick?',
-    a: 'Frontend, Backend, the Builder Path (fullstack), AI for Developers, Mobile Development, and Data & Analytics. The list decides which run first — a track nobody picks does not open.',
+    a: 'Frontend, Product Design (Figma), Backend, Fullstack Development, AI for Developers, Mobile Development, and Data & Analytics. The list decides which run first — a track nobody picks does not open.',
   },
   {
     q: 'Do I need experience?',
@@ -31,7 +32,7 @@ const FAQS = [
 export function Faq() {
   return (
     <Section id="faq">
-      <div className="grid gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-16">
         <Reveal>
           <SectionHeader
             eyebrow="Questions, answered"

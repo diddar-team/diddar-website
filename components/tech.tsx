@@ -7,6 +7,7 @@ const TECH: Tech[] = [
   { name: 'CSS', logo: 'css', tracks: 'Frontend · Builder' },
   { name: 'JavaScript', logo: 'javascript', tracks: 'Frontend · Builder' },
   { name: 'TypeScript', logo: 'typescript', tracks: 'Frontend · Builder' },
+  { name: 'Figma', logo: 'figma', tracks: 'Product Design' },
   { name: 'React', logo: 'react', tracks: 'Frontend · Mobile · Builder' },
   { name: 'Next.js', logo: 'next', tracks: 'Frontend · Builder' },
   { name: 'Node.js', logo: 'node', tracks: 'Backend · Builder' },

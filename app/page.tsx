@@ -6,6 +6,7 @@ import { TracksBoard } from '@/components/home/tracks-board';
 import { Toolbox } from '@/components/home/toolbox';
 import { Method } from '@/components/home/method';
 import { WhatsInside } from '@/components/home/whats-inside';
+import { Showcase } from '@/components/home/showcase';
 import { Voices } from '@/components/home/voices';
 import { Faq } from '@/components/home/faq';
 import { Scholarship } from '@/components/home/scholarship';
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Toolbox />
         <Method />
         <WhatsInside />
+        <Showcase />
         <Voices />
         <Faq />
         <Scholarship />

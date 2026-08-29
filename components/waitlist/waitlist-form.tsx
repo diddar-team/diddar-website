@@ -6,6 +6,7 @@ import { Checkbox, Select, Textarea, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { LEVELS, TRACKS } from '@/lib/tracks';
 import { HEAR_ABOUT } from '@/lib/waitlist';
+import { APP_NAME } from '@/lib/site';
 
 const TIMEZONES = [
   'West Africa (WAT / GMT+1)',
@@ -262,7 +263,11 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
         />
 
         <Select
-          label={<span style={{ color: 'var(--text)' }}>How did you hear about Dida?</span>}
+          label={
+            <span style={{ color: 'var(--text)' }}>
+              How did you hear about {APP_NAME}?
+            </span>
+          }
           placeholder="Optional"
           data={HEAR_ABOUT.map((h) => ({ value: h.value, label: h.label }))}
           {...form.getInputProps('hearAbout')}
@@ -288,7 +293,12 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
         />
 
         <Checkbox
-          label={<span style={{ color: 'var(--text)' }}>Send me occasional Dida updates about cohorts and launch news.</span>}
+          label={
+            <span style={{ color: 'var(--text)' }}>
+              Send me occasional {APP_NAME} updates about cohorts and launch
+              news.
+            </span>
+          }
           key={form.key('consent')}
           {...form.getInputProps('consent', { type: 'checkbox' })}
         />
@@ -370,6 +380,10 @@ function Field({
 }
 
 function SuccessCard() {
+  const shareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(
+    `I just added my name to the ${APP_NAME} list — a practical, mentor-led tech bootcamp.`,
+  )}`;
+
   return (
     <div
       className="rounded-[20px] p-8 text-center shadow-[0_24px_60px_-30px_rgba(11,22,63,0.3)] sm:p-12"
@@ -419,7 +433,7 @@ function SuccessCard() {
 
       <div className="mt-7 flex flex-col items-center gap-3">
         <a
-          href="https://x.com/intent/tweet?text=I%20just%20added%20my%20name%20to%20the%20Dida%20list%20%E2%80%94%20a%20practical%2C%20mentor-led%20tech%20bootcamp."
+          href={shareUrl}
           target="_blank"
           rel="noreferrer noopener"
           className="rounded-btn bg-primary px-6 py-3 font-sans text-sm font-semibold text-white transition-colors hover:bg-primary-dark"

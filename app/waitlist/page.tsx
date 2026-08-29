@@ -4,11 +4,11 @@ import { SiteFooter } from '@/components/site-footer';
 import { Container } from '@/components/ui/container';
 import { HandLabel } from '@/components/ui/hand-label';
 import { WaitlistForm } from '@/components/waitlist/waitlist-form';
+import { APP_NAME } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Add your name',
-  description:
-    'Tell us which track and level you want. Your answer shapes which Dida cohorts open first — and which mentors we bring in.',
+  description: `Tell us which track and level you want. Your answer shapes which ${APP_NAME} cohorts open first — and which mentors we bring in.`,
 };
 
 export default async function WaitlistPage({

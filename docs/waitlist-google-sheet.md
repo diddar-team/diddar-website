@@ -10,7 +10,7 @@ You only have to do this once.
 
 ## 1. Create the Sheet
 
-1. Create a new Google Sheet — name it e.g. **Dida Waitlist**.
+1. Create a new Google Sheet — name it e.g. **Didda Waitlist**.
 2. Add two tabs (bottom-left): rename `Sheet1` to **Waitlist**, add a second
    tab named **Newsletter**.
 3. On **Waitlist**, put these headers in row 1 (A1:L1):
@@ -81,7 +81,7 @@ You only have to do this once.
 
 1. **Deploy → New deployment**.
 2. Type: **Web app**.
-3. Description: `Dida waitlist intake`.
+3. Description: `Didda waitlist intake`.
 4. Execute as: **Me**.
 5. Who has access: **Anyone**.
 6. **Deploy**, authorise when prompted, and copy the **Web app URL**
