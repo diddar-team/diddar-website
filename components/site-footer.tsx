@@ -22,11 +22,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   },
 ];
 
-const SOCIALS = [
-  { label: 'X', href: 'https://x.com' },
-  { label: 'LinkedIn', href: 'https://linkedin.com' },
-  { label: 'Instagram', href: 'https://instagram.com' },
-];
+const SOCIALS: { label: string; href: string }[] = [];
 
 export function SiteFooter() {
   return (
@@ -40,19 +36,21 @@ export function SiteFooter() {
               time, around what people actually want to learn.
             </p>
 
-            <div className="mt-6 flex items-center gap-2">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5 font-sans text-[0.75rem] font-semibold text-white/55 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
-                >
-                  {s.label[0]}
-                </a>
-              ))}
-            </div>
+            {SOCIALS.length > 0 && (
+              <div className="mt-6 flex items-center gap-2">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5 font-sans text-[0.75rem] font-semibold text-white/55 transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+                  >
+                    {s.label[0]}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {COLUMNS.map((col) => (

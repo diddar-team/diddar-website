@@ -8,7 +8,7 @@ export function BrandMark({ className }: { className?: string }) {
       viewBox="0 0 32 32"
       className={cn('h-7 w-7', className)}
       role="img"
-      aria-label="Dida"
+      aria-label={APP_NAME}
     >
       <rect width="32" height="32" rx="10" fill="var(--primary)" />
       <circle
@@ -40,7 +40,7 @@ export function BrandLockup({
   return (
     <Link
       href={href}
-      aria-label="Dida home"
+      aria-label={`${APP_NAME} home`}
       className={cn(
         'group/brand relative inline-flex items-baseline font-display text-[1.6rem] font-semibold leading-none tracking-[-0.01em] text-text',
         className,

@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Diddar — website
 
-## Getting Started
+Marketing site and waitlist for **Diddar**, a practical, mentor-led tech bootcamp.
+Visitors browse the tracks and add their name to a waitlist that records the
+track and skill level they want, so cohorts and trainers are planned around real
+demand.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack) · **React 19**
+- **Tailwind CSS v4** for styling, driven by design tokens in `theme/theme.css`
+- **Mantine v9** for interactive components (drawer, form inputs, accordion, notifications)
+- **next/font** — Fraunces (display), DM Sans (body), Caveat (accents)
+- Light theme by default; dark is opt-in and persisted (Mantine color scheme)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+pnpm build        # production build (also type-checks)
+pnpm lint         # eslint
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  page.tsx                 home page (composes components/home/*)
+  waitlist/page.tsx        the waitlist form page
+  api/waitlist/route.ts    validates + forwards submissions to a Google Sheet
+  api/pricing/route.ts     returns the (simulated) pricing config
+  layout.tsx               fonts, metadata, providers
+components/
+  home/*                   home page sections
+  ui/*                     shared primitives (Section, Button, Carousel, CardGrid…)
+  waitlist/*               the waitlist form
+  pricing/*                the scholarship / pricing breakdown
+lib/
+  site.ts                  APP_NAME, tagline, contact email, site URL
+  tracks.ts                the learning tracks + levels
+  pricing.ts               PRICING_CONFIG + math (registration / training fee)
+  waitlist.ts              zod schema + shared options
+theme/
+  theme.css                design tokens (colour, type scale, radii) — light + dark
+  mantine-theme.ts         bridges Mantine to the token set
+docs/
+  waitlist-google-sheet.md one-time setup for the waitlist Google Sheet
+```
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Everything user-facing is centralised so a rebrand or content change is a
+one-line edit:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **App name / tagline / contact email / URL** → `lib/site.ts`
+- **Learning tracks, levels, cohort length** → `lib/tracks.ts`
+- **Fees and the early-reserver scholarship** → `lib/pricing.ts` (`PRICING_CONFIG`)
+- **Colour, typography, spacing tokens** → `theme/theme.css`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Environment variables
 
-## Deploy on Vercel
+Copy `.env.example` to `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL used in metadata |
+| `WAITLIST_WEBHOOK_URL` | Google Apps Script web-app URL that appends waitlist rows to a Sheet. If unset, submissions are logged to the server console instead. See `docs/waitlist-google-sheet.md`. |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Waitlist flow
+
+Branded form → `POST /api/waitlist` (zod validation, honeypot, light rate limit)
+→ Google Apps Script web app → Google Sheet (`Waitlist` and `Newsletter` tabs).
+Follow `docs/waitlist-google-sheet.md` to wire up the Sheet.
+
+## Branches
+
+- `main` — production
+- `dev` — active development
