@@ -21,6 +21,7 @@ export const waitlistSchema = z.object({
   timezone: z.string().trim().max(120).optional(),
   goal: z.string().trim().max(600).optional(),
   hearAbout: z.enum(hearValues).optional(),
+  referrerName: z.string().trim().max(120).optional(),
   consent: z.boolean().optional(),
 
   company: z.string().optional(),
@@ -34,6 +35,8 @@ export function validateWaitlist(data: WaitlistInput): string | null {
   if (!data.track)
     return 'Pick a track you are interested in';
   if (!data.level) return 'Let us know your current level';
+  if (data.hearAbout === 'friend' && (!data.referrerName || data.referrerName.length < 2))
+    return 'Let us know who told you about us';
   if (!data.consent) return 'Please accept the updates consent to continue';
   return null;
 }

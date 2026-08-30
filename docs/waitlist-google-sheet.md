@@ -13,11 +13,15 @@ You only have to do this once.
 1. Create a new Google Sheet — name it e.g. **Didda Waitlist**.
 2. Add two tabs (bottom-left): rename `Sheet1` to **Waitlist**, add a second
    tab named **Newsletter**.
-3. On **Waitlist**, put these headers in row 1 (A1:L1):
+3. On **Waitlist**, put these headers in row 1 (A1:M1):
 
    ```
-   timestamp | kind | name | email | tracks | level | mode | timezone | goal | wantsToTeach | hearAbout | source
+   timestamp | kind | name | email | tracks | level | mode | timezone | goal | wantsToTeach | hearAbout | source | referrerName
    ```
+
+   `referrerName` is the person a signup names when they pick **A friend or
+   colleague** under "How did you hear about us" — this is the column you count
+   for partner/referral numbers.
 
 4. On **Newsletter**, put these headers in row 1 (A1:D1):
 
@@ -61,6 +65,7 @@ You only have to do this once.
            body.wantsToTeach || 'no',
            body.hearAbout || '',
            body.source || 'website',
+           body.referrerName || '',
          ]);
        }
 
@@ -122,3 +127,6 @@ On the **Waitlist** tab:
 - Select the `tracks` and `level` columns → **Insert → Pivot table** to see
   counts per track and per level.
 - Filter `wantsToTeach = yes` to get your trainer-outreach shortlist.
+- Select the `referrerName` column → **Insert → Pivot table**, group by
+  `referrerName` with a COUNTA value, to see how many signups each partner or
+  individual referred.

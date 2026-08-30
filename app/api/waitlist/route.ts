@@ -76,6 +76,7 @@ export async function POST(request: Request) {
     timezone: data.timezone ?? '',
     goal: data.goal ?? '',
     hearAbout: data.hearAbout ?? '',
+    referrerName: data.hearAbout === 'friend' ? (data.referrerName ?? '') : '',
     source: 'website',
     timestamp: new Date().toISOString(),
   };
