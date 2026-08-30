@@ -29,6 +29,11 @@ const ITEMS = [
     desc: 'Something finished you can show and talk through.',
   },
   {
+    icon: '📜',
+    title: 'A completion certificate',
+    desc: 'Finish your cohort and you leave with a certificate to show for it.',
+  },
+  {
     icon: '🤝',
     title: 'A group that stays',
     desc: 'The people you start with — after the cohort ends.',
@@ -60,6 +65,14 @@ export function WhatsInside() {
           </Reveal>
         ))}
       </CardGrid>
+
+      <Reveal>
+        <p className="mt-6 font-sans text-[0.88rem] leading-relaxed text-text-light">
+          <span className="font-semibold text-text">What you bring:</span> a
+          laptop you can work on and a stable internet connection. Everything
+          runs online, so those two are non-negotiable.
+        </p>
+      </Reveal>
     </SectionBlock>
   );
 }

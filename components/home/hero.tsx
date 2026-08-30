@@ -12,44 +12,14 @@ const TRACK_ICONS: Record<string, string> = {
   'ai-for-developers': '⬢',
   mobile: '◉',
   'data-analytics': '◆',
+  'project-management': '▦',
 };
 
 export function Hero() {
   const marqueeItems = [...TRACKS, ...TRACKS];
 
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ background: 'var(--panel)' }}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-      >
-        <div
-          className="orb-1 absolute -left-32 -top-24 h-[520px] w-[520px] rounded-full opacity-40"
-          style={{
-            background: `radial-gradient(circle, var(--primary) 0%, transparent 70%)`,
-            filter: 'blur(64px)',
-          }}
-        />
-        <div
-          className="orb-2 absolute -right-24 top-24 h-[380px] w-[380px] rounded-full opacity-50"
-          style={{
-            background: `radial-gradient(circle, var(--accent) 0%, transparent 70%)`,
-            filter: 'blur(80px)',
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `linear-gradient(var(--text) 1px, transparent 1px),
-              linear-gradient(90deg, var(--text) 1px, transparent 1px)`,
-            backgroundSize: '64px 64px',
-          }}
-        />
-      </div>
-
+    <section className="hero-bg relative overflow-hidden">
       <Container className="relative z-10 flex flex-col items-start pb-2 pt-16 lg:pt-24">
         <div
           className="mb-6 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 backdrop-blur-sm"
@@ -110,7 +80,7 @@ export function Hero() {
           style={{ borderColor: 'var(--stroke)' }}
         >
           {[
-            { n: '7', label: 'Learning tracks' },
+            { n: String(TRACKS.length), label: 'Learning tracks' },
             { n: '2', label: 'Skill levels' },
             { n: '100%', label: 'Online' },
             { n: COHORT_LENGTH, label: 'Every cohort' },

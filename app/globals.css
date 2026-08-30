@@ -54,42 +54,6 @@
   }
 }
 
-@keyframes orb-drift-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(60px, -40px) scale(1.08);
-  }
-  66% {
-    transform: translate(-30px, 30px) scale(0.96);
-  }
-}
-
-@keyframes orb-drift-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  40% {
-    transform: translate(-50px, 30px) scale(1.06);
-  }
-  70% {
-    transform: translate(40px, -20px) scale(0.94);
-  }
-}
-
-@keyframes orb-drift-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(30px, 50px) scale(1.1);
-  }
-}
-
 @keyframes marquee-scroll {
   from {
     transform: translateX(0);
@@ -143,6 +107,43 @@
     display: none;
   }
 
+  .hero-bg {
+    background-color: var(--panel);
+    background-image:
+      radial-gradient(
+        58rem 40rem at 8% -12%,
+        color-mix(in srgb, var(--primary) 11%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        42rem 36rem at 96% 4%,
+        color-mix(in srgb, var(--accent) 9%, transparent),
+        transparent 66%
+      ),
+      linear-gradient(
+        color-mix(in srgb, var(--text) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--text) 4%, transparent) 1px,
+        transparent 1px
+      );
+    background-size:
+      100% 100%,
+      100% 100%,
+      66px 66px,
+      66px 66px;
+    background-repeat: no-repeat, no-repeat, repeat, repeat;
+    background-attachment: fixed, fixed, fixed, fixed;
+  }
+
+  @media (max-width: 767px) {
+    .hero-bg {
+      background-attachment: scroll, scroll, scroll, scroll;
+    }
+  }
+
   .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -170,16 +171,6 @@
 
   .marquee-track:hover {
     animation-play-state: paused;
-  }
-
-  .orb-1 {
-    animation: orb-drift-1 18s ease-in-out infinite;
-  }
-  .orb-2 {
-    animation: orb-drift-2 22s ease-in-out infinite;
-  }
-  .orb-3 {
-    animation: orb-drift-3 16s ease-in-out infinite;
   }
 
   .btn-glow {

@@ -296,7 +296,14 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
           label={
             <span style={{ color: 'var(--text)' }}>
               Send me occasional {APP_NAME} updates about cohorts and launch
-              news.
+              news. See how we handle your details in the{' '}
+              <Link
+                href="/privacy"
+                className="font-semibold text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+              >
+                privacy note
+              </Link>
+              .
             </span>
           }
           key={form.key('consent')}
