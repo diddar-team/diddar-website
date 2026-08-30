@@ -13,11 +13,19 @@ const FAQS = [
   },
   {
     q: 'Which tracks can I pick?',
-    a: 'Frontend, Product Design (Figma), Backend, Fullstack Development, AI for Developers, Mobile Development, and Data & Analytics. The list decides which run first — a track nobody picks does not open.',
+    a: 'Frontend, Product Design (Figma), Backend, Fullstack Development, AI for Developers, Mobile Development, Data & Analytics, and Project Management. The list decides which run first — a track nobody picks does not open.',
   },
   {
     q: 'Do I need experience?',
     a: 'Most tracks have a beginner entry point covering the fundamentals. Mobile Development starts at the intermediate level. Pick the level that fits when you add your name.',
+  },
+  {
+    q: 'What do I need to take part?',
+    a: 'A laptop you can work on and a stable internet connection. Everything is online — live sessions, code review and project work — so those two matter. No specific operating system required.',
+  },
+  {
+    q: 'Is there a certificate?',
+    a: 'Yes. Finish your cohort and you get a certificate of completion for the track and level you took.',
   },
   {
     q: 'When does it start, and what does it cost?',

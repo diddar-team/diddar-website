@@ -180,6 +180,30 @@ export const TRACKS: Track[] = [
       'Deliver an end-to-end analysis project',
     ],
   },
+  {
+    slug: 'project-management',
+    name: 'Project Management',
+    tagline: 'Get the work shipped',
+    blurb:
+      'Learn to plan and run software projects — Agile and Scrum, sprint planning and backlogs, timelines, risk, and the stakeholder communication that keeps a team moving.',
+    levels: ['beginner', 'intermediate'],
+    stack: [
+      'Agile',
+      'Scrum',
+      'Kanban',
+      'Backlogs',
+      'Roadmaps',
+      'Jira',
+    ],
+    outcomes: [
+      'Run a project with Agile, Scrum or Kanban',
+      'Break work into a backlog and plan sprints',
+      'Build realistic timelines and track progress',
+      'Spot risks and unblock the team early',
+      'Keep stakeholders aligned with clear updates',
+      'Run standups, reviews and retrospectives',
+    ],
+  },
 ];
 
 export const TRACK_SLUGS = TRACKS.map((t) => t.slug);

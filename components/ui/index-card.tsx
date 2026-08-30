@@ -12,6 +12,7 @@ const TRACK_ICONS: Record<string, string> = {
   'ai-for-developers': '⬢',
   mobile: '◉',
   'data-analytics': '◆',
+  'project-management': '▦',
 };
 
 export function IndexCard({

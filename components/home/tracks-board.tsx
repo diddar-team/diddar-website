@@ -12,7 +12,6 @@ export function TracksBoard() {
       eyebrow="The tracks"
       tone="brand"
       title="Pick the one that's yours."
-      description="The tracks with the most names become the first cohorts."
       aside
     >
       <CardGrid>
