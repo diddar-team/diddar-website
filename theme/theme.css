@@ -2,8 +2,8 @@
   color-scheme: light;
 
   --primary: #061e31;
-  --primary-dark: #0a2bba;
-  --primary-light: #315cff;
+  --primary-dark: #0e2db8;
+  --primary-light: #4969f0;
 
   --accent: #f36b42;
   --accent-dark: #d8542e;
@@ -68,9 +68,9 @@
 :root[data-mantine-color-scheme='dark'] {
   color-scheme: dark;
 
-  --primary: #4b6dff;
-  --primary-dark: #315cff;
-  --primary-light: #8aa0ff;
+  --primary: #061e31;
+  --primary-dark: #0e2db8;
+  --primary-light: #4969f0;
 
   --accent: #ff7e52;
   --accent-dark: #f36b42;
