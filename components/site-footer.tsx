@@ -26,7 +26,7 @@ const SOCIALS: { label: string; href: string }[] = [];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-primary">
+    <footer className="border-t border-white/10 bg-ink">
       <Container className="py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.6fr]">
           <div className="max-w-xs">

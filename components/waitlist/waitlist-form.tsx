@@ -26,6 +26,7 @@ type Values = {
   timezone: string;
   goal: string;
   hearAbout: string;
+  referrerName: string;
   consent: boolean;
   company: string;
 };
@@ -46,6 +47,7 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
       timezone: '',
       goal: '',
       hearAbout: '',
+      referrerName: '',
       consent: false,
       company: '',
     },
@@ -57,6 +59,10 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
           : 'Enter a valid email address',
       track: (v) => (!v ? 'Pick a track you are interested in' : null),
       level: (v) => (v ? null : 'Select your current level'),
+      referrerName: (v, values) =>
+        values.hearAbout === 'friend' && v.trim().length < 2
+          ? 'Let us know who told you about us'
+          : null,
       consent: (v) => (v ? null : 'Please accept to continue'),
     },
   });
@@ -272,7 +278,10 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
           data={HEAR_ABOUT.map((h) => ({ value: h.value, label: h.label }))}
           {...form.getInputProps('hearAbout')}
           value={form.getValues().hearAbout || null}
-          onChange={(v) => form.setFieldValue('hearAbout', v ?? '')}
+          onChange={(v) => {
+            form.setFieldValue('hearAbout', v ?? '');
+            if (v !== 'friend') form.setFieldValue('referrerName', '');
+          }}
           styles={{
             input: {
               background: 'var(--surface)',
@@ -281,6 +290,32 @@ export function WaitlistForm({ defaultTrack }: { defaultTrack?: string }) {
             },
           }}
         />
+
+        {form.getValues().hearAbout === 'friend' && (
+          <TextInput
+            label={
+              <span style={{ color: 'var(--text)' }}>
+                Who told you about {APP_NAME}?
+              </span>
+            }
+            description={
+              <span style={{ color: 'var(--text-light)' }}>
+                Their name so we can say thanks.
+              </span>
+            }
+            placeholder="Their full name"
+            withAsterisk
+            key={form.key('referrerName')}
+            {...form.getInputProps('referrerName')}
+            styles={{
+              input: {
+                background: 'var(--surface)',
+                borderColor: 'var(--stroke)',
+                color: 'var(--text)',
+              },
+            }}
+          />
+        )}
 
         <input
           type="text"
