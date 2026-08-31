@@ -4,7 +4,7 @@ import { MantineProvider, localStorageColorSchemeManager } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { cssVariablesResolver, mantineTheme } from '@/theme/mantine-theme';
 
-export const COLOR_SCHEME_KEY = 'dida-color-scheme';
+export const COLOR_SCHEME_KEY = 'diddar-color-scheme';
 
 const colorSchemeManager = localStorageColorSchemeManager({
   key: COLOR_SCHEME_KEY,

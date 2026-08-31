@@ -50,7 +50,7 @@ export function SiteHeader() {
         )}
       >
         <div className="mx-auto flex h-[68px] w-full max-w-[1120px] items-center justify-between gap-6 px-5 sm:px-8">
-          <BrandLockup />
+          <BrandLockup priority />
 
           <nav
             aria-label="Main navigation"

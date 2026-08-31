@@ -30,7 +30,7 @@ export function SiteFooter() {
       <Container className="py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.6fr]">
           <div className="max-w-xs">
-            <BrandLockup className="text-white [--text:#fff]" />
+            <BrandLockup tone="light" />
             <p className="mt-5 font-sans text-sm leading-relaxed text-white/55">
               A practical, mentor-led tech bootcamp — built one cohort at a
               time, around what people actually want to learn.
